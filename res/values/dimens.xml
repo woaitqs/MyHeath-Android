@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- nav -->
+    <dimen name="nav_bar_height">40dip</dimen>
+    <dimen name="nav_margin_right">3dip</dimen>
+    <dimen name="nav_margin_left">3dip</dimen>
+    <dimen name="nav_title_font">22dip</dimen>
+    
+    <!-- dotview -->
+    <dimen name="dot_space">15dip</dimen>
+    
+    <!-- P3 -->
+    <dimen name="list_item_title">18dp</dimen>
+    <dimen name="list_item_sub_title">14dp</dimen>
+    
+    <dimen name="hint_height">20dip</dimen>
+    
+    <dimen name="no_network_padding_bottom">70dip</dimen>
+    <dimen name="no_network_vertical_space">10dip</dimen>
+    
+    <dimen name="text_size_micro">12dip</dimen>
+    <dimen name="text_size_small">14dip</dimen>
+    <dimen name="text_size_normal">16dip</dimen>
+    <dimen name="text_size_big">18dip</dimen>
+    <dimen name="text_size_large">22dip</dimen>
+    <dimen name="home_search_box_background_height">66dip</dimen>
+    <dimen name="home_rising_background_height">32dip</dimen>
+    <dimen name="home_entrances_margin_top_bottom">8dip</dimen>
+    <dimen name="app_button_area_width">56dip</dimen>
+    <dimen name="manage_bottom_height">130dip</dimen>
+    <dimen name="welcome_storagebar_padding">20dip</dimen>
+    <dimen name="search_item_height">56dip</dimen>
+    <dimen name="local_app_select_area_width">44dip</dimen>
+    <dimen name="net_app_categories_width">140dip</dimen>
+    <dimen name="net_app_categoriy_item_height">40dip</dimen>
+    
+    
+    <dimen name="image_icon_height">48dip</dimen>
+    <dimen name="image_icon_width">48dip</dimen>
+    
+    <dimen name="xxsmall_margin">2dip</dimen>
+    <dimen name="xsmall_margin">4dip</dimen>
+    <dimen name="small_margin">6dip</dimen>
+    <dimen name="middle_margin">8dip</dimen>
+    <dimen name="xmiddle_margin">10dip</dimen>
+    <dimen name="normal_margin">12dip</dimen>
+    <dimen name="xnormal_margin">14dip</dimen>
+    <dimen name="large_margin">18dip</dimen>
+    <dimen name="xlarge_margin">28dip</dimen>
+    <dimen name="xxlarge_margin">40dip</dimen>
+
+    <!-- action bar tab -->
+    <dimen name="action_bar_tab_height">32dip</dimen>
+    
+    <!-- P2 -->
+    <dimen name="xsmall_text_size">12sp</dimen>
+    <dimen name="small_text_size">14sp</dimen>
+    <dimen name="middle_text_size">16sp</dimen>
+    <dimen name="normal_text_size">18sp</dimen>
+    <dimen name="xlarge_text_size">22sp</dimen>
+    <dimen name="xxlarge_text_size">50sp</dimen>
+    <dimen name="xsmall_padding">4dip</dimen>
+    <dimen name="actionbar_height">48dip</dimen>
+    <dimen name="searchbox_icon_width">37dip</dimen>
+    <dimen name="searchbox_textSize">16sp</dimen>
+    <dimen name="loading_icon_width">20dip</dimen>
+    <dimen name="loading_icon_height">20dip</dimen>
+    <dimen name="large_button_width">86dip</dimen>
+    <dimen name="small_button_height">30dip</dimen>
+    <dimen name="small_button_width">70dip</dimen>
+    <dimen name="connection_button_height">45dip</dimen>
+    <dimen name="connection_button_width">200dip</dimen>
+    <dimen name="connection_button_height_small">35dip</dimen>
+    <dimen name="connection_button_width_small">150dip</dimen>
+    <dimen name="title_textSize">22sp</dimen>
+    <dimen name="button_textSize">18dip</dimen>
+    <dimen name="small_button_textSize">14sp</dimen>
+    <dimen name="sub_title_textSize">16sp</dimen>
+    <dimen name="tips_textSize">14sp</dimen>
+    <dimen name="content_textSize">12dip</dimen>
+    <dimen name="action_button_textSize">16sp</dimen>
+    <dimen name="sub_nav_textSize">16sp</dimen>
+    <dimen name="music_title_textSize">15sp</dimen>
+    <dimen name="music_info_textSize">12sp</dimen>
+    <dimen name="list_textSize">15sp</dimen>
+    <dimen name="list_info_textSize">12sp</dimen>
+    <dimen name="recommend_app_item_width">62dip</dimen>
+    <dimen name="recommend_app_item_height">100dip</dimen>
+    <dimen name="app_gallery_spacing">30dip</dimen>
+    <dimen name="icon_width">46dip</dimen>
+    <dimen name="icon_height">46dip</dimen>
+    <dimen name="icon_frame_width">56dip</dimen>
+    <dimen name="icon_frame_height">56dip</dimen>
+    <dimen name="navigation_bar_height">44dip</dimen>
+    <dimen name="sub_nav_height">40dip</dimen>
+    <dimen name="list_view_margin_top">40dip</dimen>
+    <dimen name="list_fadding_edge">3dip</dimen>
+    <dimen name="checkbox_margin_bottom">5dip</dimen>
+    <dimen name="checkbox_margin_top">7dip</dimen>
+    <dimen name="checkbox_margin_left">10dip</dimen>
+    <dimen name="detail_icon_height">48dip</dimen>
+    <dimen name="detail_icon_width">48dip</dimen>
+    <dimen name="album_icon_height">96dip</dimen>
+    <dimen name="album_icon_width">80dip</dimen>
+    <dimen name="album_icon_margin">5dip</dimen>
+    <dimen name="album_info_margin">10dip</dimen>
+    <dimen name="storage_outer_corner">4dip</dimen>
+    <dimen name="storage_inner_corner">3dip</dimen>
+    <dimen name="dashboard_item_height">60dip</dimen>
+    <dimen name="welcome_recommend_height">176dip</dimen>
+    
+    <dimen name="welcome_storagebar_height">20dip</dimen>
+    <dimen name="welcome_storagebar_inner_height">16dip</dimen>
+    <dimen name="management_title_textSize">16sp</dimen>
+    <dimen name="storage_status_textSize">14sp</dimen>
+    <dimen name="no_result_height">112dip</dimen>
+    <dimen name="checkbox_small_size">20dip</dimen>
+    <dimen name="no_resource_icon_width">120dp</dimen>
+    <dimen name="no_resource_icon_height">80dp</dimen>
+    <dimen name="no_resource_icon_margin_top">130dp</dimen>
+    <dimen name="no_resource_text_margin_top">20dp</dimen>
+    <dimen name="no_sd_tip_textSize">14sp</dimen>
+    <dimen name="no_resource_tip_textSize">16sp</dimen>
+    <dimen name="no_network_tip_textSize">16sp</dimen>
+    <dimen name="thumbnail_padding">8dip</dimen>
+    <dimen name="about_dialog_large_text">24sp</dimen>
+    <dimen name="about_dialog_middle_text">16sp</dimen>
+    <dimen name="about_dialog_small_text">14sp</dimen>
+    <dimen name="about_dialog_margin_top">140dip</dimen>
+    <dimen name="about_dialog_margin_bottom">22dip</dimen>
+    <dimen name="welcome_content_padding">10dip</dimen>
+    <dimen name="welcome_content_padding_bottom">5dip</dimen>
+    <dimen name="app_grid_padding">5dip</dimen>
+    <dimen name="slider_drawer_handle_height">44dip</dimen>
+    <dimen name="slider_drawer_close_button_size">44dip</dimen>
+    <dimen name="page_point_size">6dip</dimen>
+    <dimen name="webview_loading_bound">35dip</dimen>
+    <dimen name="account_seperator_height">10dip</dimen>
+    <dimen name="account_normal_textSize">20sp</dimen>
+    <dimen name="account_sina_auth_padding">36dip</dimen>
+    <dimen name="connection_wifi_image_width">290dip</dimen>
+    <dimen name="connection_wifi_image_height">150dip</dimen>
+    <dimen name="connection_usb_image_width">225dip</dimen>
+    <dimen name="connection_usb_image_height">191dip</dimen>
+    <dimen name="connection_bottom_height">70dip</dimen>
+    <dimen name="connection_bottom_usb_height">70dip</dimen>
+    <dimen name="connection_bottom_usb_width">50dip</dimen>
+    <dimen name="auth_code_area_height">110dip</dimen>
+    <dimen name="auth_code_margin_top">8dip</dimen>
+    <dimen name="auth_code_text_size">50dip</dimen>
+    <dimen name="dropdown_item_height">48dip</dimen>
+    <dimen name="br_item_height">60dip</dimen>
+    <dimen name="no_network_tip2_padding_bottem">70dip</dimen>
+    <dimen name="traffics_text_size">18dip</dimen>
+    <dimen name="traffics_text_small_size">16dip</dimen>
+    <dimen name="traffics_padding">12dip</dimen>
+    <dimen name="traffics_margin">9dip</dimen>
+    <dimen name="traffics_middle_margin">10dip</dimen>
+    <dimen name="login_button_width">76dip</dimen>
+    <dimen name="logout_button_max_width">100dip</dimen>
+    <dimen name="upgrade_guide_margin">85dip</dimen>
+    <dimen name="screenshot_width">96dip</dimen>
+    <dimen name="screenshot_height">156dip</dimen>
+    <dimen name="comment_content_height">200dip</dimen>
+
+</resources>

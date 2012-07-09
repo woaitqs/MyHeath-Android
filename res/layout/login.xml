@@ -4,13 +4,55 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <LinearLayout 
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_height="match_parent"
+    <LinearLayout
         android:layout_width="match_parent"
-        >
-        
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/login_username_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/login_password_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password" >
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/login_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/account_seperator_height"
+            android:layout_weight="1"
+            android:background="@drawable/button_large"
+            android:padding="@dimen/xsmall_margin"
+            android:text="@string/login"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/account_normal_textSize" />
+
+        <Button
+            android:id="@+id/go_register"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/button_small"
+            android:padding="@dimen/xsmall_margin"
+            android:text="@string/register"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/account_normal_textSize" />
     </LinearLayout>
 
 </LinearLayout>

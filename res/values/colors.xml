@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- P3 -->
+    <color name="list_item_background">#FAFAFA</color>
+    <color name="list_item_title">#333333</color>
+    <color name="list_item_sub_title">#ABABAB</color>
+    <color name="search_box_background">#f1f1f1</color>
+    <color name="list_shape2">#ffffff</color>
+    <color name="list_shape1">#d5d5d5</color>
+
+    <!-- common colors -->
+    <color name="green">#66aa00</color>
+    <color name="black">#333333</color>
+    <color name="grey">#ababab</color>
+    <color name="orange">#c66a46</color>
+    <color name="ade_green">#e5eadd</color>
+    <color name="ade_black">#ababab</color>
+    <color name="ade_grey">#d5d5d5</color>
+    <color name="ade_orange">#f0c2b3</color>
+    <color name="white">#fafafa</color>
+    <color name="sixty_transparent">#66e5eadd</color>
+    
+    <color name="hint_background">#f1f1f1</color>
+
+    <!-- action bar -->
+    <color name="actionbar_bg">#dddddd</color>
+    <color name="action_bar_title_text_color">#333333</color>
+
+    <!-- P2 -->
+    <color name="gray">#FFCCCCCC</color>
+    <color name="transparent_white">#66FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="dark_gray">#ff999999</color>
+    <color name="light_green">#FF66AA01</color>
+    <color name="normal_text_color_hiden">#94949494</color>
+    <color name="normal_text_color_black">#FF333333</color>
+    <color name="normal_text_color_gray">#FF949494</color>
+    <color name="disabled">#FFB3B3B3</color>
+    <color name="storage_inner_start">#FF3D6105</color>
+    <color name="storage_inner_end">#FF79AE12</color>
+    <color name="storage_outer_start">#FF424345</color>
+    <color name="storage_outer_end">#FF3f4042</color>
+    <color name="dashboard_storage_outter_start">#3f4042</color>
+    <color name="dashboard_storage_outter_end">#3a3a3c</color>
+    <color name="storage_inner_app_start">#1e77b1</color>
+    <color name="storage_inner_app_end">#41b2fd</color>
+    <color name="storage_inner_music_start">#b86004</color>
+    <color name="storage_inner_music_end">#f99935</color>
+    <color name="storage_inner_image_start">#4d7e04</color>
+    <color name="storage_inner_image_end">#9bdd38</color>
+    <color name="storage_inner_video_start">#aa1b53</color>
+    <color name="storage_inner_video_end">#e04783</color>
+    <color name="radio_button_divider">#FFA4A7AB</color>
+    <color name="connection_busy_text_color">#FFDADBDE</color>
+    <color name="connection_idle_text_color">#FFE3E6E9</color>
+    <color name="background">#FFE1E3E7</color>
+    <color name="date_bar_background">#F3E1E3E7</color>
+    <color name="app_detail_background_color">#FFF9F9F9</color>
+    <color name="app_screenshot_background_color">#FF333333</color>
+    <color name="task_status_red">#d94f03</color>
+    <color name="task_status_green">#598527</color>
+    <color name="shadow_background_color">#aa000000</color>
+    <color name="app_ignore_btn_color">#494949</color>
+    <color name="point_box_background">#AA949494</color>
+</resources>
