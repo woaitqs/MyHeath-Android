@@ -9,9 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.buaa.shortytall.R;
+import com.buaa.shortytall.adapter.NewsAdapter;
 import com.buaa.shortytall.adapter.OriginViewPagerAdapter;
+import com.buaa.shortytall.bean.News;
 import com.buaa.shortytall.util.ViewUtil;
 import com.buaa.shortytall.view.DotView;
 import com.buaa.shortytall.view.NavigationBar;
@@ -23,6 +26,9 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     private NavigationBar mNavigationBar;
     private LayoutInflater mInflater;
     private DotView mDotView;
+    private ListView mListView;
+    private List<News> mNews;
+    private NewsAdapter mNewsAdapter;
     
     private List<View> mViews;
     private List<Bitmap> mBitmaps;
@@ -52,9 +58,14 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     protected void initViews() {
         setContentView(R.layout.main);
-        mViewPager = (ViewPager)findViewById(R.id.main_view_pager);
+        
+        LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+        View specailView = inflater.inflate(R.layout.specialnews, null);
+        
+        mViewPager = (ViewPager)specailView.findViewById(R.id.main_view_pager);
         mNavigationBar = (NavigationBar)findViewById(R.id.main_navigationbar);
-        mDotView = (DotView)findViewById(R.id.main_dotview);
+        mDotView = (DotView)specailView.findViewById(R.id.main_dotview);
+        mListView = (ListView)findViewById(R.id.main_listview);
         
         mNavigationBar.setTitleContent(R.string.app_name);
         
@@ -73,6 +84,22 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         mPageAdapter = new OriginViewPagerAdapter(MainActivity.this, mViews);
         mViewPager.setAdapter(mPageAdapter);
         mViewPager.setOnPageChangeListener(MainActivity.this);
+        
+        mNewsAdapter = new NewsAdapter(MainActivity.this, null);
+        
+        mNews = new ArrayList<News>();
+        mNews.add(new News("医药的春天","新的世界迎来新的春天",""));
+        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
+        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
+        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
+        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
+        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
+        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
+        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
+        
+        mNewsAdapter.setData(mNews);
+        mListView.addHeaderView(specailView);
+        mListView.setAdapter(mNewsAdapter);
     }
 
     @Override

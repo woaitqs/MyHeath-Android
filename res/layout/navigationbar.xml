@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="@dimen/nav_title_font"
+        android:textColor="@color/white"
         android:shadowColor="#333333"
         android:shadowRadius="0.2"
         android:shadowDy="-1.1"

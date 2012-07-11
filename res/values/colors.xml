@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+	<color name="transport_grey">#80806969</color>
+    
     <!-- P3 -->
     <color name="list_item_background">#FAFAFA</color>
     <color name="list_item_title">#333333</color>
@@ -18,7 +19,7 @@
     <color name="ade_black">#ababab</color>
     <color name="ade_grey">#d5d5d5</color>
     <color name="ade_orange">#f0c2b3</color>
-    <color name="white">#fafafa</color>
+    <color name="white">#f7f7f7</color>
     <color name="sixty_transparent">#66e5eadd</color>
     
     <color name="hint_background">#f1f1f1</color>

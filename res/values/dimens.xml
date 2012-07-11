@@ -7,8 +7,21 @@
     <dimen name="nav_margin_left">3dip</dimen>
     <dimen name="nav_title_font">22dip</dimen>
     
+    <!-- viewpager -->
+    <dimen name="viewpage_content_title_margin">7dip</dimen>
+    
+    <!-- news -->
+    <dimen name="news_avatar_size">48dip</dimen>
+    
     <!-- dotview -->
     <dimen name="dot_space">15dip</dimen>
+    
+    <!-- footer bar -->
+    <dimen name="footer_bar_height">48dip</dimen>
+    <dimen name="footer_bar_icon_height">43dip</dimen>
+    <dimen name="footer_bar_blank_height">5dip</dimen>
+    <dimen name="zero">0dip</dimen>
+    
     
     <!-- P3 -->
     <dimen name="list_item_title">18dp</dimen>
