@@ -3,7 +3,9 @@ package com.buaa.shortytall.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,16 +29,12 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     private ViewPager mViewPager;
     private OriginViewPagerAdapter mPageAdapter;
-    private NavigationBar mNavigationBar;
-    private LayoutInflater mInflater;
     private DotView mDotView;
-    private LayoutInflater inflater;
     private ListView mListView;
     private List<News> mNews;
     private NewsAdapter mNewsAdapter;
     private List<View> mViewPagerViews;
     private List<Bitmap> mBitmaps;
-    private FooterBar mFooterBar;
     
     private void initViewPageView(){
         mBitmaps = new ArrayList<Bitmap>();
@@ -66,7 +64,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     }
     
     private void initFooterBar(){
-        mFooterBar.setPosition(0);
+        mFootBar.setPosition(0);
     }
     
     private void initListView(){
@@ -101,17 +99,13 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     }
     
     @Override
-    protected void initViews() {
-        setContentView(R.layout.main);
-        mListView = (ListView)findViewById(R.id.main_listview);
-        mInflater = LayoutInflater.from(MainActivity.this);
-        mNavigationBar = (NavigationBar)findViewById(R.id.main_navigationbar);
-        mFooterBar = (FooterBar)findViewById(R.id.main_footer);
-        
+    protected View initViews() {
+        View contentView = mInflater.inflate(R.layout.home, null);
+        mListView = (ListView)contentView.findViewById(R.id.main_listview);
         initNavigationBar();
         initListView();
         initFooterBar();
-        
+        return contentView;
     }
 
     @Override
@@ -132,21 +126,24 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     protected void onResume() {
         super.onResume();
-        GetAllNewsThread.GetAllNewsHandler handler = new GetAllNewsHandler(MainActivity.this);
-        GetAllNewsThread newsThread = new GetAllNewsThread(handler);
-        newsThread.start();
+//        GetAllNewsThread.GetAllNewsHandler handler = new GetAllNewsHandler(MainActivity.this);
+//        GetAllNewsThread newsThread = new GetAllNewsThread(handler);
+//        newsThread.start();
     }
 
     @Override
     public void getAllNewsSuccessed() {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public void getAllNewsFailed() {
-        // TODO Auto-generated method stub
         
+    }
+
+    @Override
+    protected Context setContext() {
+        return MainActivity.this;
     }
     
 }

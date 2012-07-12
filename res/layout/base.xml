@@ -21,14 +21,12 @@
 	        android:layout_alignParentBottom="true"
 	        android:layout_height="@dimen/footer_bar_height" />
         
-	    <ListView 
-		    android:id="@+id/main_listview"
+	    <LinearLayout 
+		    android:id="@+id/main_content"
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent"
-		    android:layout_above="@id/main_footer"
-		    android:divider="@drawable/line"
-		    android:fadingEdge="none" >
-		</ListView>
+		    android:layout_above="@id/main_footer">
+		</LinearLayout>
 		
     </RelativeLayout>
 
