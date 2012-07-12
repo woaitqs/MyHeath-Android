@@ -9,116 +9,27 @@
         android:id="@+id/main_navigationbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/nav_bar_height" />
-    
     <RelativeLayout 
         android:id="@+id/main_relativelayout"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         >
-	    <LinearLayout
-	        android:id="@+id/main_footbar"
+        
+        <com.buaa.shortytall.view.FooterBar
+	        android:id="@+id/main_footer"
 	        android:layout_width="match_parent"
 	        android:layout_alignParentBottom="true"
-	        android:layout_height="@dimen/footer_bar_height"
-	        android:background="@drawable/nav_bar_bg"
-	        android:orientation="vertical" >
-	        <LinearLayout 
-	            android:orientation="horizontal"
-	            android:layout_width="match_parent"
-	            android:layout_height="@dimen/footer_bar_icon_height"
-	            >
-	            <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:src="@drawable/home"
-		            android:layout_gravity="center"
-		            />
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:src="@drawable/calc"
-		            android:layout_gravity="center"
-		            />
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:src="@drawable/personal"
-		            android:layout_gravity="center"
-		            />
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:src="@drawable/search"
-		            android:layout_gravity="center"
-		            />
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:src="@drawable/more"
-		            android:layout_gravity="center"
-		            />
-	        </LinearLayout>
-	        <LinearLayout 
-	            android:orientation="horizontal"
-	            android:layout_width="match_parent"
-	            android:layout_height="@dimen/footer_bar_blank_height"
-	            >
-	            <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:src="@drawable/white_focus"
-		            android:layout_gravity="center"
-		            android:visibility="visible"
-		            />
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:src="@drawable/white_focus"
-		            android:layout_gravity="center"
-		            android:visibility="invisible"
-		            />
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:src="@drawable/white_focus"
-		            android:layout_gravity="center"
-		            android:visibility="invisible"
-		            />
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:src="@drawable/white_focus"
-		            android:layout_gravity="center"
-		            android:visibility="invisible"
-		            />
-		        <ImageView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_weight="1"
-		            android:src="@drawable/white_focus"
-		            android:layout_gravity="center"
-		            android:visibility="invisible"
-		            />
-	        </LinearLayout>
-	    </LinearLayout>
-	    
-	    <ListView
-	        android:id="@+id/main_listview"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:divider="@drawable/line"
-	        android:layout_above="@id/main_footbar"
-	        android:fadingEdge="none" >
-	    </ListView>
+	        android:layout_height="@dimen/footer_bar_height" />
+        
+	    <ListView 
+		    android:id="@+id/main_listview"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_above="@id/main_footer"
+		    android:divider="@drawable/line"
+		    android:fadingEdge="none" >
+		</ListView>
+		
     </RelativeLayout>
 
 </LinearLayout>
