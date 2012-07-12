@@ -9,7 +9,7 @@
         android:id="@+id/news_avatar"
         android:layout_width="@dimen/news_avatar_size"
         android:layout_height="@dimen/news_avatar_size"
-        android:src="@d rawable/ic_launcher"
+        android:src="@drawable/ic_launcher"
         />
     
     <LinearLayout 

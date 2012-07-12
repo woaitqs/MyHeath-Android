@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_bar_height"
-    android:gravity="center"
-    android:background="@drawable/nav_bar_bg"
-    android:orientation="horizontal" >
+    android:background="@drawable/nav_bar_bg" >
 
     <ImageView 
         android:id="@+id/nav_left_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginRight="@dimen/nav_margin_right"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         />
     
     <TextView 
         android:id="@+id/nav_title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:textSize="@dimen/nav_title_font"
         android:textColor="@color/white"
         android:shadowColor="#333333"
@@ -30,7 +28,7 @@
         android:id="@+id/nav_right_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/nav_margin_left"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         />
-</LinearLayout>
+</RelativeLayout>
