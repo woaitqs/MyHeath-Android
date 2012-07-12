@@ -8,6 +8,9 @@
     <string name="username">用户名</string>
     <string name="password">密码</string>
     <string name="login">登陆 </string>
-    <string name="register">注册</string>
+	<string name="register">注册</string>
+	
+	 <!-- search -->
+    <string name="drugname">药品名</string>
     
 </resources>
