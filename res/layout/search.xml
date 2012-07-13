@@ -9,20 +9,28 @@
         android:layout_height="60dp"
         android:orientation="horizontal" 
         android:padding="10dp">
-		<Button 
+		<!-- <Button 
 		    android:id="@+id/search_drugname_switchbutton"
 		    android:layout_width="wrap_content"
 		    android:layout_height="fill_parent"
 		    android:background="@drawable/search"
 		   >
-		</Button>
+		</Button> -->
+		<Spinner
+            android:id="@+id/search_switch_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+        </Spinner> <!-- 定义一个下拉菜单 -->
+        
         <EditText
             android:id="@+id/search_drugname_edittext"
-            android:layout_width="220dp"
+            android:layout_width="180dp"
             android:layout_height="fill_parent"
             android:hint="@string/drugname"
-            android:layout_toRightOf="@id/search_drugname_switchbutton"
-            android:textSize="20dp" >
+            android:layout_toRightOf="@id/search_switch_spinner"
+            android:textSize="20dp"
+             >
         </EditText>
         <Button 
 		    android:id="@+id/search_drugname_button"

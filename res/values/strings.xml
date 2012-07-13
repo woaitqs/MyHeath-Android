@@ -13,4 +13,7 @@
 	 <!-- search -->
     <string name="drugname">药品名</string>
     
+    <!--drug detail  -->
+    <string name="points">用户评分</string>
+    
 </resources>
