@@ -2,23 +2,27 @@ package com.buaa.shortytall.activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+
 
 import com.buaa.shortytall.R;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.text.Editable;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 
 public class SearchActivity extends BaseActivity{
 
@@ -26,9 +30,12 @@ public class SearchActivity extends BaseActivity{
 	 private SQLiteDatabaseDao daodefault;
 	 private EditText searchTextView;
 	 private Button searchButton;
-	 private Button searchSwitchButton;
+	 //private Button searchSwitchButton;
 	 private ListView list;
 	 private Boolean searchFlag;
+	 private Spinner searchSwitchSpinner;
+	 private List<String> spinnerList = new ArrayList<String>();  
+	 private ArrayAdapter<String> spinneradapter;  
 	 
 	 OnClickListener mySearchButtonClickListener;
 	// 存储数据的数组列表
@@ -36,6 +43,11 @@ public class SearchActivity extends BaseActivity{
 	 // 适配器
 	 SimpleAdapter listItemAdapter;
 	 
+    @Override
+    protected Context setContext() {
+    	return SearchActivity.this;
+	    }
+    
 	@Override
 	protected void initWindows() {
 		// TODO Auto-generated method stub
@@ -54,37 +66,58 @@ public class SearchActivity extends BaseActivity{
 		
 	}
 
+    private void initNavigationBar(){
+	        mNavigationBar.setTitleContent(R.string.app_name);
+	        mNavigationBar.setRightImage(R.drawable.more);
+    }
+	    
+    private void initFooterBar(){
+	        mFootBar.setPosition(0);
+    }
+    
 	@Override
 	protected View initViews() {
 		// TODO Auto-generated method stub
-        setContentView(R.layout.search);
+		 View contentView = mInflater.inflate(R.layout.search, null);
+		 initNavigationBar();
+		 initFooterBar();
         searchFlag = true;
         daodefault = new SQLiteDatabaseDao();
         
-        searchTextView = (EditText)findViewById(R.id.search_drugname_edittext);
-        searchButton = (Button)findViewById(R.id.search_drugname_button);
-        searchSwitchButton = (Button)findViewById(R.id.search_drugname_switchbutton);
+        searchTextView = (EditText)contentView.findViewById(R.id.search_drugname_edittext);
+        searchButton = (Button)contentView.findViewById(R.id.search_drugname_button);
+        //searchSwitchButton = (Button)findViewById(R.id.search_drugname_switchbutton);
+        searchSwitchSpinner = (Spinner)contentView.findViewById(R.id.search_switch_spinner);
+        spinnerList.add("药品");
+        spinnerList.add("症状");
         
-        searchSwitchButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if(searchFlag == true)
-				{
-					searchSwitchButton.setBackgroundResource(R.drawable.search);
-					searchTextView.setHint("症状");
-					searchFlag = false;
-				}
-				else if(searchFlag == false)
-				{
-					searchSwitchButton.setBackgroundResource(R.drawable.search);
-					searchTextView.setHint("药品名");
-					searchFlag = true;
-				}
-				
-			}
-		});
+        spinneradapter = new ArrayAdapter<String>(SearchActivity.this,R.layout.spinner_item, spinnerList);
+        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        searchSwitchSpinner.setAdapter(spinneradapter);
+        searchSwitchSpinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
+        	@SuppressWarnings("unchecked")
+			public void onItemSelected(AdapterView arg0, View arg1, int arg2, long arg3) {   
+                // TODO Auto-generated method stub   
+                /* 将所选mySpinner 的值带入myTextView 中*/  
+                searchTextView.setHint(spinneradapter.getItem(arg2));
+                String type = spinneradapter.getItem(arg2);
+                if(type.equalsIgnoreCase("药品"))
+                {
+                	searchFlag = true;
+                }
+                else if(type.equalsIgnoreCase("症状"))
+                {
+                	searchFlag = false;
+                }
+                /* 将mySpinner 显示*/  
+                arg0.setVisibility(View.VISIBLE);   
+            }   
+            @SuppressWarnings("unchecked")
+			public void onNothingSelected(AdapterView arg0) {   
+                // TODO Auto-generated method stub   
+                arg0.setVisibility(View.VISIBLE);   
+            }       	
+        });
         
         searchButton.setOnClickListener(new OnClickListener() {
 			
@@ -106,7 +139,7 @@ public class SearchActivity extends BaseActivity{
 			}
 		});
         
-        list = (ListView) findViewById(R.id.search_drugname_listview);
+        list = (ListView) contentView.findViewById(R.id.search_drugname_listview);
         listItemAdapter = new SimpleAdapter(SearchActivity.this,
         		listData,
         		R.layout.search_drug_list,
@@ -115,7 +148,7 @@ public class SearchActivity extends BaseActivity{
         		);
         list.setAdapter(listItemAdapter);
         list.setOnItemClickListener(clickItem);
-        return null;
+        return contentView;
 	}
 	
 	OnItemClickListener clickItem = new OnItemClickListener() {
@@ -125,8 +158,10 @@ public class SearchActivity extends BaseActivity{
 				long arg3) {
 			// TODO Auto-generated method stub
 			HashMap<String,Object> mapTemp = (HashMap<String,Object>)list.getItemAtPosition(arg2);
-			String valueTemp = (String) mapTemp.get("id"); 
-			System.out.println("valueTemp"+valueTemp);
+ 			String valueTemp = (String) mapTemp.get("id"); 
+			Intent intent=new Intent(SearchActivity.this,DrugDetailActivity.class);
+			intent.putExtra("detail", valueTemp);
+			startActivity(intent);
 		}
 	};
 	
