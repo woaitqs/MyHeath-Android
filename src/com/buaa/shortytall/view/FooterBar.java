@@ -14,11 +14,6 @@ public class FooterBar extends LinearLayout{
     private static final int MIN_POS = 0;
     
     private LinearLayout mMoveView;
-    private ImageView mHomeView;
-    private ImageView mCalcView;
-    private ImageView mPersonView;
-    private ImageView mSearchView;
-    private ImageView mMoreView;
     
     public FooterBar(Context context, AttributeSet attrs) {
         this(context, attrs,0);
@@ -32,11 +27,6 @@ public class FooterBar extends LinearLayout{
         super(context, attrs);
         View contentView = inflate(context, R.layout.footbar, null);
         mMoveView = (LinearLayout)contentView.findViewById(R.id.footbar_move_view);
-        mHomeView = (ImageView)contentView.findViewById(R.id.footerbar_home);
-        mCalcView = (ImageView)contentView.findViewById(R.id.footerbar_calc);
-        mPersonView = (ImageView)contentView.findViewById(R.id.footerbar_personal);
-        mSearchView = (ImageView)contentView.findViewById(R.id.footerbar_search);
-        mMoreView = (ImageView)contentView.findViewById(R.id.footerbar_more);
         this.addView(contentView);
     }
     

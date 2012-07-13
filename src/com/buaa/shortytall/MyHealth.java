@@ -8,6 +8,8 @@ public class MyHealth extends Application{
 
     private static Context mContext;
     
+    public static int SPALSH_TIME = 2000;
+    
     public static final String APP_SDCARD_FOLDER = 
             Environment.getExternalStorageDirectory().toString() + "/.imagecache/";
     
@@ -28,5 +30,6 @@ public class MyHealth extends Application{
     public static class Msg{
         public static final int GET_ALLNEWS_SUCCESSED = 0;
         public static final int GET_ALLNEWS_fAILED = 1;
+        public static final int FLASH_IMG_FINISHED = 2;
     }
 }

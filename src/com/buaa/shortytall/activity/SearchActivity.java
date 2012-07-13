@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import com.buaa.shortytall.R;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -54,7 +55,7 @@ public class SearchActivity extends BaseActivity{
 	}
 
 	@Override
-	protected void initViews() {
+	protected View initViews() {
 		// TODO Auto-generated method stub
         setContentView(R.layout.search);
         searchFlag = true;
@@ -114,6 +115,7 @@ public class SearchActivity extends BaseActivity{
         		);
         list.setAdapter(listItemAdapter);
         list.setOnItemClickListener(clickItem);
+        return null;
 	}
 	
 	OnItemClickListener clickItem = new OnItemClickListener() {
@@ -179,4 +181,10 @@ public class SearchActivity extends BaseActivity{
 		 }
 		}
 	}
+
+    @Override
+    protected Context setContext() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
