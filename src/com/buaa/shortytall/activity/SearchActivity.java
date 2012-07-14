@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.KeyEvent;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.view.Window;
@@ -72,9 +73,24 @@ public class SearchActivity extends BaseActivity{
     }
 	    
     private void initFooterBar(){
-	        mFootBar.setPosition(0);
+	        mFootBar.setPosition(3);
     }
     
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		System.out.println("onKeyDown");
+		mFootBar.setVisibility(View.GONE);
+		return super.onKeyDown(keyCode, event);
+	}
+    
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+	    mFootBar.setVisibility(View.VISIBLE);
+		return super.onKeyUp(keyCode, event);
+	}
+
 	@Override
 	protected View initViews() {
 		// TODO Auto-generated method stub
@@ -217,9 +233,5 @@ public class SearchActivity extends BaseActivity{
 		}
 	}
 
-    @Override
-    protected Context setContext() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+    
 }

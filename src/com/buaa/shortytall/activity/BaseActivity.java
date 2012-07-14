@@ -64,6 +64,8 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
         case R.id.footerbar_personal:
             break;
         case R.id.footerbar_search:
+        	 startActivity(new Intent(mContext, SearchActivity.class));
+             ((Activity)mContext).finish();
             break;
         case R.id.footerbar_check:
             startActivity(new Intent(mContext, HealthCheckActivity.class));
