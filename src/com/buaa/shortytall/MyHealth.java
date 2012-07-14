@@ -11,7 +11,7 @@ public class MyHealth extends Application{
     public static int SPALSH_TIME = 2000;
     
     public static final String APP_SDCARD_FOLDER = 
-            Environment.getExternalStorageDirectory().toString() + "/.imagecache/";
+            Environment.getExternalStorageDirectory().getAbsolutePath();
     
     @Override
     public void onCreate() {
@@ -31,5 +31,6 @@ public class MyHealth extends Application{
         public static final int GET_ALLNEWS_SUCCESSED = 0;
         public static final int GET_ALLNEWS_fAILED = 1;
         public static final int FLASH_IMG_FINISHED = 2;
+        public static final int IMG_LOADED_COMPLETED = 3;
     }
 }

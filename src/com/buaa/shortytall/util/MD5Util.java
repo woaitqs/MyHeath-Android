@@ -24,6 +24,7 @@ public class MD5Util {
 	    }
 	    
 	    /** 对字符串进行MD5加密 */
+	    //digest 方法同步有问题
 	    public synchronized static String encodeByMD5(String originString) {
 	      if (originString != null) {
 	         try {

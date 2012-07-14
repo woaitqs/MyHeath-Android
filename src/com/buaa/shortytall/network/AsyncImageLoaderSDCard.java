@@ -3,6 +3,7 @@ package com.buaa.shortytall.network;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.buaa.shortytall.MyHealth;
 import com.buaa.shortytall.util.ImageUtil;
 
 import android.graphics.Bitmap;
@@ -17,7 +18,7 @@ import android.util.Log;
 public class AsyncImageLoaderSDCard {
 
 	private static final int MB = 1024 * 1024;
-	
+	private static String FILE_FOLDER_PATH = MyHealth.APP_SDCARD_FOLDER + "/MyHealth/.imagcecache/";
 	/**
 	 * 计算sd空间
 	 * @return sd空间大小 M
