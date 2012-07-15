@@ -14,7 +14,8 @@
     <string name="drugname">药品名</string>
     
     <!--drug detail  -->
-    <string name="points">用户评分</string>
+    <string name="points">当前评分</string>
+    <string name="drugdetail_comments">用户评论</string>
     
     <!-- function -->
     <string name="more_function">更多功能</string>

@@ -126,9 +126,9 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     @Override
     protected void onResume() {
         super.onResume();
-//        GetAllNewsThread.GetAllNewsHandler handler = new GetAllNewsHandler(MainActivity.this);
-//        GetAllNewsThread newsThread = new GetAllNewsThread(handler);
-//        newsThread.start();
+        GetAllNewsThread.GetAllNewsHandler handler = new GetAllNewsHandler(MainActivity.this);
+        GetAllNewsThread newsThread = new GetAllNewsThread(handler);
+        newsThread.start();
     }
 
     @Override

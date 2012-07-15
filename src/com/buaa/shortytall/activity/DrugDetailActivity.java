@@ -9,23 +9,59 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.buaa.shortytall.R;
+import com.buaa.shortytall.thread.GetAllCommentsThread;
+import com.buaa.shortytall.thread.GetAllCommentsThread.GetAllCommentsHandler;
+import com.buaa.shortytall.thread.GetAllCommentsThread.GetAllCommentsListener;
 
 
 
-public class DrugDetailActivity extends BaseActivity {
+public class DrugDetailActivity extends BaseActivity implements GetAllCommentsListener{
+
+	
 
 	private SQLiteDatabase mDb;
 	private SQLiteDatabaseDao daodefault;
 	
 	private ListView list;
+	private TextView userCommentsText;
+	private TextView pointsText;
+	private RatingBar pointsBar;
+	private ListView userCommentsListView;
 	 
 	// 存储数据的数组列表
 	private ArrayList<HashMap<String, Object>> listData = new ArrayList<HashMap<String,Object>>();
+	//存储评论数据
+	private ArrayList<HashMap<String, Object>> CommentslistData = new ArrayList<HashMap<String,Object>>();
 	// 适配器
 	private	SimpleAdapter listItemAdapter;
+	private	SimpleAdapter CommentslistItemAdapter;
+	
+	
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		GetAllCommentsThread.GetAllCommentsHandler handler = new GetAllCommentsHandler(DrugDetailActivity.this);
+		GetAllCommentsThread commentsThread = new GetAllCommentsThread(handler);
+		super.onResume();
+	}
+
+	@Override
+	public void getAllCommentsSuccessed() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getAllCommentsFailed() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	@Override
     protected Context setContext() {
@@ -69,10 +105,22 @@ public class DrugDetailActivity extends BaseActivity {
 		 Intent intent=getIntent();
 		 String drugid =  intent.getStringExtra("detail");
 		 //System.out.println("hashmap"+drugid);
+		 userCommentsText = (TextView)contentView.findViewById(R.id.drugdetail_commment_textview);
+		 pointsText = (TextView)contentView.findViewById(R.id.drugdetail_points_textview);
+		 pointsBar = (RatingBar)contentView.findViewById(R.id.drugdetail_points_ratingBar);
+		 userCommentsListView = (ListView)contentView.findViewById(R.id.drugdetail_comment_listview);
+		 userCommentsListView.setDivider(null);
+		 CommentslistItemAdapter = new SimpleAdapter(DrugDetailActivity.this,
+				 						CommentslistData,
+				 						R.layout.comments_detail_list,
+				 						new String[]{"drugdetail_title","drugdetail_description"},
+				 						new int[]{R.id.drugdetail_title,R.id.drugdetail_description});
 		 
 		 daodefault = new SQLiteDatabaseDao();
 		 
 		 daodefault.getAllData(drugid);
+		 
+		 
 		 
 		 
 		 list = (ListView) contentView.findViewById(R.id.drugdetail_listview);
@@ -112,7 +160,14 @@ public class DrugDetailActivity extends BaseActivity {
 				
 				    HashMap<String, Object> map = new HashMap<String, Object>();
 			        map.put("drugdetail_title", this.changeName(i));
-			        map.put("drugdetail_description", c.getString(i));
+			        String description =  c.getString(i);
+			        if(description == null)
+			        {
+			        	description = new String("暂无");
+			        }
+			        String descriptionreplace =  description.replace("<br/>", "");
+			        
+			        map.put("drugdetail_description",descriptionreplace);
 			        listData.add(map);
 			      }
 			 }
@@ -154,5 +209,7 @@ public class DrugDetailActivity extends BaseActivity {
 			
 		}
 	}
+
+	
 
 }

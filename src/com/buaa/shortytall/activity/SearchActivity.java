@@ -174,7 +174,8 @@ public class SearchActivity extends BaseActivity{
 				long arg3) {
 			// TODO Auto-generated method stub
 			HashMap<String,Object> mapTemp = (HashMap<String,Object>)list.getItemAtPosition(arg2);
- 			String valueTemp = (String) mapTemp.get("id"); 
+ 			String valueTemp = (String) mapTemp.get("id");
+ 			System.out.println("the drug id "+valueTemp);
 			Intent intent=new Intent(SearchActivity.this,DrugDetailActivity.class);
 			intent.putExtra("detail", valueTemp);
 			startActivity(intent);
