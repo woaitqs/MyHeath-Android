@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Hello World, BuaaShortyTallActivity!</string>
-    <string name="app_name">BuaaShortyTall</string>
+    <string name="app_name">MyHealth</string>
 
     <!-- account -->
     <string name="username">用户名</string>
@@ -15,5 +15,11 @@
     
     <!--drug detail  -->
     <string name="points">用户评分</string>
+    
+    <!-- function -->
+    <string name="more_function">更多功能</string>
+    <string name="about_us">关于我们</string>
+    <string name="query_doctor">咨询医生</string>
+    <string name="personal_center">个人中心</string>
     
 </resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item 
+        android:id = "@+id/menu_function"
+        android:icon="@drawable/more"
+        android:showAsAction="ifRoom"
+        android:title="@string/more_function"
+        >
+        <menu>
+    	    <item android:id="@+id/personal_center"
+    	        android:title="@string/personal_center"
+    	        android:icon="@drawable/person"
+    	    />
+    	    <item android:id="@+id/query_doctor"
+    	        android:title="@string/query_doctor"
+    	        android:icon="@drawable/ask"
+    	    />
+    	    <item android:id="@+id/about_us"
+    	        android:title="@string/about_us"
+    	        android:icon="@drawable/about"
+    	    />
+    	</menu> 
+    </item>
+
+</menu>
