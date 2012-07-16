@@ -92,6 +92,7 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
         mNavigationBar.setLeftImage(R.drawable.more);
         Intent intent=new Intent(DrugDetailActivity.this,SearchActivity.class);
         mNavigationBar.setReback(intent);
+        mNavigationBar.setVisibility(View.GONE);
     }
 	private void initFooterBar(){
        mFootBar.setVisibility(View.GONE);    

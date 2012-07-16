@@ -15,8 +15,12 @@
     </style>
 
     <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid">
-        <item name="backgroundStacked">@drawable/nav_bar_bg</item>
+        <item name="backgroundStacked">@drawable/aa_tab_background</item>
+        <!-- 
+        <item name="android:background">@drawable/nav_bar_bg</item>
+        <item name="background">@drawable/nav_bar_bg</item>
         <item name="titleTextStyle">@style/phoenix.ActionBar.Title</item>
+         -->
     </style>
 
     <style name="phoenix.ActionBar.Title" parent="TextAppearance.Sherlock.Widget.ActionBar.Title">
@@ -29,7 +33,7 @@
     </style>
 
     <style name="Widget.Holo.ActionBar.TabView" parent="android:Widget.Holo.ActionBar.TabView">
-        <!-- <item name="android:background">@drawable/aa_tab_indicator_holo</item> -->
+        <item name="android:background">@drawable/aa_tab_indicator_holo</item>
         <item name="android:paddingLeft">16dip</item>
         <item name="android:paddingRight">16dip</item>
     </style>

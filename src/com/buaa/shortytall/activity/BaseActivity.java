@@ -56,20 +56,14 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     public void onClick(View v) {
         switch(v.getId()){
         case R.id.footerbar_home:
-            startActivity(new Intent(mContext, MainActivity.class));
-            ((Activity)mContext).finish();
             break;
         case R.id.footerbar_calc:
             break;
         case R.id.footerbar_personal:
             break;
         case R.id.footerbar_search:
-        	 startActivity(new Intent(mContext, SearchActivity.class));
-             ((Activity)mContext).finish();
             break;
         case R.id.footerbar_check:
-            startActivity(new Intent(mContext, HealthCheckActivity.class));
-            ((Activity)mContext).finish();
             break;
         }
         

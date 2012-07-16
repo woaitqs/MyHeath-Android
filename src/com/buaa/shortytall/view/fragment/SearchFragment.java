@@ -4,13 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.app.ActionBar.Tab;
-import com.buaa.shortytall.R;
-import com.buaa.shortytall.R.layout;
-import com.buaa.shortytall.activity.DrugDetailActivity;
-import com.buaa.shortytall.activity.SearchActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,13 +13,18 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.AdapterView.OnItemClickListener;
+
+import com.actionbarsherlock.app.ActionBar.Tab;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.buaa.shortytall.R;
+import com.buaa.shortytall.activity.DrugDetailActivity;
 
 public class SearchFragment extends New_BaseFragment{
 
@@ -79,7 +77,7 @@ public class SearchFragment extends New_BaseFragment{
          //System.out.println("getAlldata"+ text);
          if(searchFlag == true)
          {
-             Cursor c = mDb.rawQuery("select * from drug where cnName like ?" , new String[] { "%"+text.toString() + "%" });
+             Cursor c = mDb.rawQuery("select * from drug where cnName like ? limit 10" , new String[] { "%"+text.toString() + "%" });
              //int columnsSize = c.getColumnCount();
              //System.out.println("cursor size"+columnsSize);
              listData = new ArrayList<HashMap<String, Object>>();
@@ -95,7 +93,7 @@ public class SearchFragment extends New_BaseFragment{
          }
          else if(searchFlag == false)
          {
-             Cursor c = mDb.rawQuery("select * from drug where cnName like ? or indication like ?" , new String[] { "%"+text.toString() + "%","%"+text.toString() + "%" });
+             Cursor c = mDb.rawQuery("select * from drug where cnName like ? or indication like ? limit 10" , new String[] { "%"+text.toString() + "%","%"+text.toString() + "%" });
              //int columnsSize = c.getColumnCount();
              //System.out.println("cursor size"+columnsSize);
              listData = new ArrayList<HashMap<String, Object>>();
