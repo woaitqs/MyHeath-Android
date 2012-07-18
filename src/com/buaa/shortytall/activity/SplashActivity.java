@@ -62,7 +62,7 @@ public class SplashActivity extends Activity{
 				case MyHealth.Msg.FLASH_IMG_FINISHED:
 					SplashActivity.this.finish();
 					Intent intent = new Intent();
-					intent.setClass(SplashActivity.this, MainActivity.class);
+					intent.setClass(SplashActivity.this, New_MainActivity.class);
 					startActivity(intent);
 					break;
 				default: return;

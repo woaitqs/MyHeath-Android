@@ -2,47 +2,112 @@ package com.buaa.shortytall.bean;
 
 public class News {
 
+    public News(String mTitle, String mContent, String mAvatar, String mId,
+            String mDate, int mComments) {
+        this.mTitle = mTitle;
+        this.mContent = mContent;
+        this.mAvatar = mAvatar;
+        this.mId = mId;
+        this.mDate = mDate;
+        this.mComments = mComments;
+    }
+
     private String mTitle;
     private String mContent;
-    private String mUrl;
     private String mAvatar;
+    private String mId;
+    private String mDate;
+    private int mComments;
     
-    public News(String mTitle, String mContent, String mUrl) {
-        super();
-        this.mTitle = mTitle;
-        this.mContent = mContent;
-        this.mUrl = mUrl;
-    }
-    
-    public String getAvatar(){
-        return this.mAvatar;
-    }
-    
-    public void setAvatar(String avatar){
-        this.mAvatar = avatar;
-    }
-    
-    public String getTitle() {
+    public String getmTitle() {
         return mTitle;
     }
-    public void setTitle(String mTitle) {
+
+    public void setmTitle(String mTitle) {
         this.mTitle = mTitle;
     }
-    public String getContent() {
+
+    public String getmContent() {
         return mContent;
     }
-    public void setContent(String mContent) {
+
+    public void setmContent(String mContent) {
         this.mContent = mContent;
     }
-    public String getUrl() {
-        return mUrl;
+
+    public String getmAvatar() {
+        return mAvatar;
     }
-    public void setUrl(String mUrl) {
-        this.mUrl = mUrl;
+
+    public void setmAvatar(String mAvatar) {
+        this.mAvatar = mAvatar;
     }
-    
-    public String getSubContent(){
-        //TODO
-        return mContent;
+
+    public String getmId() {
+        return mId;
+    }
+
+    public void setmId(String mId) {
+        this.mId = mId;
+    }
+
+    public String getmDate() {
+        return mDate;
+    }
+
+    public void setmDate(String mDate) {
+        this.mDate = mDate;
+    }
+
+    public int getmComments() {
+        return mComments;
+    }
+
+    public void setmComments(int mComments) {
+        this.mComments = mComments;
+    }
+
+    public static class NewsBuider{
+        private String title = "";
+        private String content = "";
+        private String avatar = "";
+        private String id = "";
+        private String date = "";
+        private int comments = 0;
+        private News news = new News(title, content, avatar, id, date, comments);
+        
+        public News build(){
+            return news;
+        }
+        
+        public NewsBuider setTitle(String title){
+            news.setmTitle(title);
+            return this;
+        }
+        
+        public NewsBuider setContent(String content){
+            news.setmContent(content);
+            return this;
+        }
+        
+        public NewsBuider setAvatart(String url){
+            news.setmAvatar(url);
+            return this;
+        }
+        
+        public NewsBuider setId(String id){
+            news.setmId(id);
+            return this;
+        }
+        
+        public NewsBuider setDate(String date){
+            news.setmDate(date);
+            return this;
+        }
+        
+        public NewsBuider setComments(int count){
+            news.setmComments(count);
+            return this;
+        }
     }
 }

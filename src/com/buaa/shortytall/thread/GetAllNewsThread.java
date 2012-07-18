@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.http.client.ClientProtocolException;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -20,8 +21,17 @@ public class GetAllNewsThread extends AbstractNetWorkThread implements Runnable{
     public void run() {
         try {
             String result = executeGet();
-            assert(result != null);
-            Log.d("****************888", result);
+            Message msg = new Message();
+            if (result != null ){
+                Bundle mBundle = new Bundle();
+                mBundle.putString(MyHealth.Bundle_keys.NEWS_JSON, result);
+                msg.setData(mBundle);
+                msg.what = MyHealth.Msg.GET_ALLNEWS_SUCCESSED;
+            } else{
+                // network error
+                msg.what = MyHealth.Msg.GET_ALLNEWS_fAILED;
+            }
+            handler.sendMessage(msg);
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -35,7 +45,7 @@ public class GetAllNewsThread extends AbstractNetWorkThread implements Runnable{
     
     public static interface GetAllNewsListener{
         
-        public void getAllNewsSuccessed();
+        public void getAllNewsSuccessed(String json);
         
         public void getAllNewsFailed();
     }
@@ -52,7 +62,9 @@ public class GetAllNewsThread extends AbstractNetWorkThread implements Runnable{
             super.handleMessage(msg);
             switch (msg.what) {
             case MyHealth.Msg.GET_ALLNEWS_SUCCESSED:
-                listener.getAllNewsSuccessed();
+                Bundle bundle = msg.getData();
+                String json = bundle.getString(MyHealth.Bundle_keys.NEWS_JSON);
+                listener.getAllNewsSuccessed(json);
                 break;
             case MyHealth.Msg.GET_ALLNEWS_fAILED:
                 listener.getAllNewsFailed();
@@ -66,7 +78,7 @@ public class GetAllNewsThread extends AbstractNetWorkThread implements Runnable{
 
     @Override
     public String getRequestUrl() {
-        mUrl = MyHealth.Url.BASE_URL +  "/myhealth1.0/index.php/news_c/all";
+        mUrl = MyHealth.Url.BASE_URL +  "/myhealth1.0/index.php/news_c/all/format/json";
         return mUrl;
     }
 

@@ -7,6 +7,7 @@
     
     <ImageView 
         android:id="@+id/news_avatar"
+        android:layout_marginLeft="@dimen/normal_margin"
         android:layout_width="@dimen/news_avatar_size"
         android:layout_height="@dimen/news_avatar_size"
         android:src="@drawable/ic_launcher"
@@ -14,7 +15,7 @@
     
     <LinearLayout 
         android:layout_marginLeft="10dip"
-        android:layout_height="@dimen/news_avatar_size"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="vertical"
         >
@@ -26,7 +27,7 @@
 	        />
 	    
 	    <TextView 
-	        android:id = "@+id/news_subtitle"
+	        android:id = "@+id/news_date"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        />

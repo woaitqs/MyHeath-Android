@@ -3,13 +3,18 @@ package com.buaa.shortytall.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.buaa.shortytall.R;
 import com.buaa.shortytall.bean.News;
+import com.buaa.shortytall.network.ImageCache;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Toast;
 
 public class NewsAdapter extends BaseAdapter{
 
@@ -21,6 +26,7 @@ public class NewsAdapter extends BaseAdapter{
         this.mContext = context;
         this.mHandler = handler;
         this.mNews = new ArrayList<News>();
+        ImageCache.getInstance().setHandler(mHandler);
     }
     
     public void setData(List<News> mNews){
@@ -46,23 +52,45 @@ public class NewsAdapter extends BaseAdapter{
 
     @Override
     public long getItemId(int arg0) {
-        return 0;
+        return arg0;
     }
 
     @Override
     public View getView(int position, View convertView , ViewGroup parent) {
-        NewsItem item;
+        
+        NewsItem newsitem = new NewsItem(mContext);
         if ( convertView == null || convertView.getTag() == null){
-            item = new NewsItem(mContext);
+            newsitem = new NewsItem(mContext);
         } else{
-            item = (NewsItem)convertView.getTag();
+            newsitem = (NewsItem)convertView.getTag();
         }
         
         final News news = mNews.get(position);
-        item.setTitle(news.getTitle());
-        item.setSubTitle(news.getSubContent());
+        final String title = news.getmTitle();
+        final String date = news.getmDate();
         
-        return item.getView();
+        newsitem.setTitle(title);
+        newsitem.setDate(date);
+        
+        if (news.getmAvatar() != null){
+            Bitmap bitmap = ImageCache.getInstance().getCachedBitmap(news.getmAvatar());
+            if (bitmap != null){
+                newsitem.setAvatar(bitmap);
+            }else{
+                newsitem.setAvatarById(R.drawable.ic_launcher);
+                ImageCache.getInstance().getBitmapFromUrl(news.getmAvatar());
+            }
+        }
+        
+        newsitem.getView().setOnClickListener(new OnClickListener() {
+            
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, news.getmId(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        
+        return newsitem.getView();
     }
 
 }

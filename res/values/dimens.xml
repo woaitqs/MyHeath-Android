@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+    <!-- pop -->
+    <dimen name="pop_big">20px</dimen>
+    <dimen name="pop_small">5px</dimen>
+    
     <!-- nav -->
     <dimen name="nav_bar_height">40dip</dimen>
     <dimen name="nav_margin_right">3dip</dimen>

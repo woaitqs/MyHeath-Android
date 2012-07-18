@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class NewsItem {
 
     private TextView mTitle;
-    private TextView mSubTitle;
+    private TextView mDate;
     private Context mContext;
     private ImageView mAvatar;
     private View mView;
@@ -22,7 +22,7 @@ public class NewsItem {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         this.mView = inflater.inflate(R.layout.news, null,false);
         mTitle = (TextView)mView.findViewById(R.id.news_title);
-        mSubTitle = (TextView)mView.findViewById(R.id.news_subtitle);
+        mDate = (TextView)mView.findViewById(R.id.news_date);
         mAvatar = (ImageView)mView.findViewById(R.id.news_avatar);
         mView.setTag(this);
     }
@@ -37,8 +37,12 @@ public class NewsItem {
         }
     }
     
-    public void setSubTitle(String mSubTitle) {
-        this.mSubTitle.setText(mSubTitle);
+    public void setAvatarById(int resid){
+        this.mAvatar.setImageResource(resid);
+    }
+    
+    public void setDate(String mSubTitle) {
+        this.mDate.setText(mSubTitle);
     }
 
     public View getView(){

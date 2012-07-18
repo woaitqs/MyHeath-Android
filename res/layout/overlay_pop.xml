@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bubble_background"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/pop_big"
+    android:paddingLeft="@dimen/pop_small"
+    android:paddingRight="@dimen/pop_small"
+    android:paddingTop="@dimen/pop_small" >
+
+    <TextView
+        android:id="@+id/overlay_title"
+        style="@style/map_BubblePrimary"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:gravity="center_horizontal"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/overlay_description"
+        style="@style/map_BubbleSecondary"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="false" />
+
+</LinearLayout>

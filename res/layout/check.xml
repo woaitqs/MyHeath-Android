@@ -4,6 +4,17 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical" >
-    
+
+    <FrameLayout
+        android:id="@+id/human_check_base"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            android:id="@+id/human_page"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/human" />
+    </FrameLayout>
 
 </LinearLayout>

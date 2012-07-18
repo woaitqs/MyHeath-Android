@@ -22,8 +22,6 @@ import com.buaa.shortytall.thread.GetAllCommentsThread.GetAllCommentsListener;
 
 public class DrugDetailActivity extends BaseActivity implements GetAllCommentsListener{
 
-	
-
 	private SQLiteDatabase mDb;
 	private SQLiteDatabaseDao daodefault;
 	

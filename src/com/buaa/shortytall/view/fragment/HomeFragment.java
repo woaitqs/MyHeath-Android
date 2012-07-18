@@ -15,19 +15,23 @@ import android.widget.ListView;
 
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.buaa.shortytall.MyHealth;
 import com.buaa.shortytall.R;
 import com.buaa.shortytall.adapter.NewsAdapter;
 import com.buaa.shortytall.adapter.OriginViewPagerAdapter;
 import com.buaa.shortytall.bean.News;
+import com.buaa.shortytall.thread.GetAllNewsThread;
+import com.buaa.shortytall.thread.GetAllNewsThread.GetAllNewsHandler;
+import com.buaa.shortytall.thread.GetAllNewsThread.GetAllNewsListener;
+import com.buaa.shortytall.util.JsonUtil;
 import com.buaa.shortytall.util.ViewUtil;
-import com.buaa.shortytall.view.DotView;
 
-public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageChangeListener{
+public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageChangeListener, GetAllNewsListener{
 
     
     private ViewPager mViewPager;
     private OriginViewPagerAdapter mPageAdapter;
-    private DotView mDotView;
+//    private DotView mDotView;
     private ListView mListView;
     private List<News> mNews;
     private NewsAdapter mNewsAdapter;
@@ -45,7 +49,7 @@ public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageCh
         LayoutInflater mInflater = LayoutInflater.from(context);
         View specailView = mInflater.inflate(R.layout.specialnews, null);
         mViewPager = (ViewPager)specailView.findViewById(R.id.main_view_pager);
-        mDotView = (DotView)specailView.findViewById(R.id.main_dotview);
+//        mDotView = (DotView)specailView.findViewById(R.id.main_dotview);
         initViewPageView();
         //inflate this
         mViewPagerViews = new ArrayList<View>();
@@ -58,17 +62,7 @@ public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageCh
         mPageAdapter = new OriginViewPagerAdapter(context, mViewPagerViews);
         mViewPager.setAdapter(mPageAdapter);
         mViewPager.setOnPageChangeListener(this);
-        mNewsAdapter = new NewsAdapter(context, null);
-        mNews = new ArrayList<News>();
-        mNews.add(new News("医药的春天","新的世界迎来新的春天",""));
-        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
-        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
-        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
-        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
-        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
-        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
-        mNews.add(new News("医药的春天","djlfjsgjadjgoeojgsdga",""));
-        mNewsAdapter.setData(mNews);
+        mNewsAdapter = new NewsAdapter(context, handler);
         mListView.addHeaderView(specailView);
         mListView.setAdapter(mNewsAdapter);
     }
@@ -87,9 +81,24 @@ public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageCh
     }
 
     @Override
-    public void handleMessage(Message message) {
-        // TODO Auto-generated method stub
+    public void onResume() {
+        super.onResume();
+        GetAllNewsHandler handler = new GetAllNewsHandler(HomeFragment.this);
+        GetAllNewsThread thread = new GetAllNewsThread(handler);
+        thread.start();
+    }
 
+    @Override
+    public void handleMessage(Message message) {
+        switch(message.what){
+        case MyHealth.Msg.IMG_LOADED_COMPLETED:
+            if (mNewsAdapter != null){
+                mNewsAdapter.notifyDataSetChanged();
+            }
+            break;
+       default:
+            break;
+        }
     }
 
     @Override
@@ -101,6 +110,17 @@ public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageCh
     protected void onInflated() {
         mListView = (ListView)contentView.findViewById(R.id.main_listview);
         initListView();
+    }
+
+    @Override
+    public void getAllNewsFailed() {
+        
+    }
+
+    @Override
+    public void getAllNewsSuccessed(String json) {
+        ArrayList<News> data = JsonUtil.praseNewsJson(json);
+        mNewsAdapter.setData(data);
     }
 
 }

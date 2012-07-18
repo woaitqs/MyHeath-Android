@@ -33,4 +33,8 @@ public class MyHealth extends Application{
         public static final int FLASH_IMG_FINISHED = 2;
         public static final int IMG_LOADED_COMPLETED = 3;
     }
+    
+    public static class Bundle_keys{
+        public static final String NEWS_JSON = "news_json";
+    }
 }
