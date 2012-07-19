@@ -14,6 +14,8 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.buaa.shortytall.R;
+import com.buaa.shortytall.adapter.CommentsAdapter;
+import com.buaa.shortytall.bean.Comments;
 import com.buaa.shortytall.thread.GetAllCommentsThread;
 import com.buaa.shortytall.thread.GetAllCommentsThread.GetAllCommentsHandler;
 import com.buaa.shortytall.thread.GetAllCommentsThread.GetAllCommentsListener;
@@ -30,6 +32,7 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 	private TextView pointsText;
 	private RatingBar pointsBar;
 	private ListView userCommentsListView;
+	private ArrayList<Comments> mComments;
 	 
 	// 存储数据的数组列表
 	private ArrayList<HashMap<String, Object>> listData = new ArrayList<HashMap<String,Object>>();
@@ -37,7 +40,7 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 	private ArrayList<HashMap<String, Object>> CommentslistData = new ArrayList<HashMap<String,Object>>();
 	// 适配器
 	private	SimpleAdapter listItemAdapter;
-	private	SimpleAdapter CommentslistItemAdapter;
+	private	CommentsAdapter CommentslistItemAdapter;
 	
 	
 	
@@ -103,26 +106,9 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 		 initFooterBar();
 		 Intent intent=getIntent();
 		 String drugid =  intent.getStringExtra("detail");
-		 //System.out.println("hashmap"+drugid);
-		 userCommentsText = (TextView)contentView.findViewById(R.id.drugdetail_commment_textview);
-		 pointsText = (TextView)contentView.findViewById(R.id.drugdetail_points_textview);
-		 pointsBar = (RatingBar)contentView.findViewById(R.id.drugdetail_points_ratingBar);
-		 userCommentsListView = (ListView)contentView.findViewById(R.id.drugdetail_comment_listview);
-		 userCommentsListView.setDivider(null);
-		 CommentslistItemAdapter = new SimpleAdapter(DrugDetailActivity.this,
-				 						CommentslistData,
-				 						R.layout.comments_detail_list,
-				 						new String[]{"drugdetail_title","drugdetail_description"},
-				 						new int[]{R.id.drugdetail_title,R.id.drugdetail_description});
+		//System.out.println("hashmap"+drugid);
 		 
-		 daodefault = new SQLiteDatabaseDao();
-		 
-		 daodefault.getAllData(drugid);
-		 
-		 
-		 
-		 
-		 list = (ListView) contentView.findViewById(R.id.drugdetail_listview);
+		 list = (ListView) contentView.findViewById(R.id.drugdetail_information_listview);
 		 list.setDivider(null);
 	     listItemAdapter = new SimpleAdapter(DrugDetailActivity.this,
 	        		listData,
@@ -131,6 +117,27 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 	        		new int[]{R.id.drugdetail_title,R.id.drugdetail_description}
 	        		);
 	     list.setAdapter(listItemAdapter);
+	     
+		 
+		 userCommentsText = (TextView)contentView.findViewById(R.id.drugdetail_commment_textview);
+		 pointsText = (TextView)contentView.findViewById(R.id.drugdetail_points_textview);
+		 pointsBar = (RatingBar)contentView.findViewById(R.id.drugdetail_points_ratingBar);
+		 pointsBar.setMax(5);
+		 pointsBar.setRating((float) 4.5);
+		 
+		 userCommentsListView = (ListView)contentView.findViewById(R.id.drugdetail_comment_listview);
+		 userCommentsListView.setDivider(null);
+		 CommentslistItemAdapter = new CommentsAdapter(this, null);
+		 mComments = new ArrayList<Comments>();
+		 mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
+		 CommentslistItemAdapter.setData(mComments);
+		 //userCommentsListView.addHeaderView(contentView);
+		 userCommentsListView.setAdapter(CommentslistItemAdapter);
+		 
+		 daodefault = new SQLiteDatabaseDao();
+		 
+		 daodefault.getAllData(drugid);
+		
 	     return contentView;
 	}
 	
