@@ -111,7 +111,7 @@ public class ImageCache {
 	private Bitmap getBitmapFromSDCard(String url){
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             Bitmap bmp;
-            String filePathStr = IMAGE_FILE_FOLDER_PATH + MD5Util.encodeByMD5(url) + ".png";
+            String filePathStr = IMAGE_FILE_FOLDER_PATH + MD5Util.encodeByMD5(url) + ".jpg";
             File file = new File(filePathStr);
             if (!file.exists()) {
                 return null;
@@ -201,8 +201,8 @@ public class ImageCache {
         HttpClientParams.setRedirecting(params, true);
         
         if (mHttpClient == null){
-			mHttpClient = new DefaultHttpClient();
-		}
+            mHttpClient = new DefaultHttpClient();
+        }
 		mHttpClient.setParams(params);
 		try {
 			HttpResponse response = mHttpClient.execute(httpGet);

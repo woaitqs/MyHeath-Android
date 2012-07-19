@@ -23,8 +23,18 @@ public class MyHealth extends Application{
         return mContext;
     }
     
+    public static class Body_Area{
+        public static final int HEAD = 100;
+        public static final int NECK = 101;
+        public static final int BREAST = 102;
+        public static final int BELLY = 103;
+        public static final int UPPER_LIMB= 104;
+        public static final int LOVER_LIMB = 105;
+        public static final int REPRODUCTIVE = 106;
+    }
+    
     public static class Url{
-        public static final String BASE_URL = "http://192.168.2.1";
+        public static final String BASE_URL = "http://106.187.36.132:82";
     }
     
     public static class Msg{

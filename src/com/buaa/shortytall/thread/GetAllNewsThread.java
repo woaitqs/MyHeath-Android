@@ -78,7 +78,7 @@ public class GetAllNewsThread extends AbstractNetWorkThread implements Runnable{
 
     @Override
     public String getRequestUrl() {
-        mUrl = MyHealth.Url.BASE_URL +  "/myhealth1.0/index.php/news_c/all/format/json";
+        mUrl = MyHealth.Url.BASE_URL +  "/index.php/news_c/all/format/json";
         return mUrl;
     }
 

@@ -23,6 +23,7 @@
         style="@style/map_BubbleSecondary"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="3dip"
         android:singleLine="false" />
 
 </LinearLayout>

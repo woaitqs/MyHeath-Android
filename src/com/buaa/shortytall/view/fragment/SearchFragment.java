@@ -138,72 +138,72 @@ public class SearchFragment extends New_BaseFragment{
     @Override
     protected void onInflated() {
         searchFlag = true;
-        daodefault = new SQLiteDatabaseDao();
+        //daodefault = new SQLiteDatabaseDao();
         
-        searchTextView = (EditText)contentView.findViewById(R.id.search_drugname_edittext);
-        searchButton = (Button)contentView.findViewById(R.id.search_drugname_button);
+//        searchTextView = (EditText)contentView.findViewById(R.id.search_drugname_edittext);
+//        searchButton = (Button)contentView.findViewById(R.id.search_drugname_button);
         //searchSwitchButton = (Button)findViewById(R.id.search_drugname_switchbutton);
-        searchSwitchSpinner = (Spinner)contentView.findViewById(R.id.search_switch_spinner);
-        spinnerList.add("药品");
-        spinnerList.add("症状");
-        
-        spinneradapter = new ArrayAdapter<String>(context,R.layout.spinner_item, spinnerList);
-        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        searchSwitchSpinner.setAdapter(spinneradapter);
-        searchSwitchSpinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
-            @SuppressWarnings("unchecked")
-            public void onItemSelected(AdapterView arg0, View arg1, int arg2, long arg3) {   
-                // TODO Auto-generated method stub   
-                /* 将所选mySpinner 的值带入myTextView 中*/  
-                searchTextView.setHint(spinneradapter.getItem(arg2));
-                String type = spinneradapter.getItem(arg2);
-                if(type.equalsIgnoreCase("药品"))
-                {
-                    searchFlag = true;
-                }
-                else if(type.equalsIgnoreCase("症状"))
-                {
-                    searchFlag = false;
-                }
-                /* 将mySpinner 显示*/  
-                arg0.setVisibility(View.VISIBLE);   
-            }   
-            @SuppressWarnings("unchecked")
-            public void onNothingSelected(AdapterView arg0) {   
-                // TODO Auto-generated method stub   
-                arg0.setVisibility(View.VISIBLE);   
-            }           
-        });
-        
-        searchButton.setOnClickListener(new OnClickListener() {
-            
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                String searchdrugname = searchTextView.getText().toString();
-                
-                System.out.println("onclick"+searchdrugname);
-                daodefault.getAllData(searchdrugname);
-                SimpleAdapter listItemAdaptertemp = new SimpleAdapter(context,
-                        listData,
-                        R.layout.search_drug_list,
-                        new String[]{"drugname"},
-                        new int[]{R.id.drugname}
-                        );
-                list.setAdapter(listItemAdaptertemp);
-                list.setOnItemClickListener(clickItem);
-            }
-        });
-        
-        list = (ListView) contentView.findViewById(R.id.search_drugname_listview);
-        listItemAdapter = new SimpleAdapter(context,
-                listData,
-                R.layout.search_drug_list,
-                new String[]{"drugname"},
-                new int[]{R.id.drugname}
-                );
-        list.setAdapter(listItemAdapter);
-        list.setOnItemClickListener(clickItem);
+//        searchSwitchSpinner = (Spinner)contentView.findViewById(R.id.search_switch_spinner);
+//        spinnerList.add("药品");
+//        spinnerList.add("症状");
+//        
+//        spinneradapter = new ArrayAdapter<String>(context,R.layout.spinner_item, spinnerList);
+//        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        searchSwitchSpinner.setAdapter(spinneradapter);
+//        searchSwitchSpinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
+//            @SuppressWarnings("unchecked")
+//            public void onItemSelected(AdapterView arg0, View arg1, int arg2, long arg3) {   
+//                // TODO Auto-generated method stub   
+//                /* 将所选mySpinner 的值带入myTextView 中*/  
+//                searchTextView.setHint(spinneradapter.getItem(arg2));
+//                String type = spinneradapter.getItem(arg2);
+//                if(type.equalsIgnoreCase("药品"))
+//                {
+//                    searchFlag = true;
+//                }
+//                else if(type.equalsIgnoreCase("症状"))
+//                {
+//                    searchFlag = false;
+//                }
+//                /* 将mySpinner 显示*/  
+//                arg0.setVisibility(View.VISIBLE);   
+//            }   
+//            @SuppressWarnings("unchecked")
+//            public void onNothingSelected(AdapterView arg0) {   
+//                // TODO Auto-generated method stub   
+//                arg0.setVisibility(View.VISIBLE);   
+//            }           
+//        });
+//        
+//        searchButton.setOnClickListener(new OnClickListener() {
+//            
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                String searchdrugname = searchTextView.getText().toString();
+//                
+//                System.out.println("onclick"+searchdrugname);
+//                daodefault.getAllData(searchdrugname);
+//                SimpleAdapter listItemAdaptertemp = new SimpleAdapter(context,
+//                        listData,
+//                        R.layout.search_drug_list,
+//                        new String[]{"drugname"},
+//                        new int[]{R.id.drugname}
+//                        );
+//                list.setAdapter(listItemAdaptertemp);
+//                list.setOnItemClickListener(clickItem);
+//            }
+//        });
+//        
+//        list = (ListView) contentView.findViewById(R.id.search_drugname_listview);
+//        listItemAdapter = new SimpleAdapter(context,
+//                listData,
+//                R.layout.search_drug_list,
+//                new String[]{"drugname"},
+//                new int[]{R.id.drugname}
+//                );
+//        list.setAdapter(listItemAdapter);
+//        list.setOnItemClickListener(clickItem);
     }
 
 }
