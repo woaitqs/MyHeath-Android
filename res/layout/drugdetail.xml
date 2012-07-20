@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
     <ListView
-            android:id="@+id/drugdetail_listview"
+            android:id="@+id/drugdetail_information_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
     </ListView> 

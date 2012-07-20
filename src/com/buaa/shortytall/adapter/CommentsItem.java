@@ -49,7 +49,7 @@ public class CommentsItem {
     public void setPoints(String mPoints) {
         this.mPoints.setMax(5);
         this.mPoints.setNumStars(5);
-        Long stars = Long.parseLong(mPoints);
+        float stars = Float.parseFloat(mPoints);
         this.mPoints.setRating(stars);
     }
 

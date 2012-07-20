@@ -14,6 +14,7 @@ import com.buaa.shortytall.network.AbstractNetWorkThread;
 public class GetAllCommentsThread extends AbstractNetWorkThread implements Runnable{
 
     private String mUrl;
+    private String drugid;
     private GetAllCommentsHandler handler;
     
     @Override
@@ -21,7 +22,7 @@ public class GetAllCommentsThread extends AbstractNetWorkThread implements Runna
         try {
             String result = executeGet();
             assert(result != null);
-            Log.d("the result", result);
+            //Log.d("the result", result);
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -29,7 +30,8 @@ public class GetAllCommentsThread extends AbstractNetWorkThread implements Runna
         }
     }
     
-    public GetAllCommentsThread(GetAllCommentsHandler handler){
+    public GetAllCommentsThread(GetAllCommentsHandler handler,String drug_id){
+    	drugid = drug_id.toString();  
         this.handler = handler;
     }
     
@@ -67,7 +69,7 @@ public class GetAllCommentsThread extends AbstractNetWorkThread implements Runna
     @Override
     public String getRequestUrl() {
     	//TODO api url
-        mUrl = MyHealth.Url.BASE_URL +  "/myhealth1.0/index.php/news_c/all";
+        mUrl = MyHealth.Url.BASE_URL +  "/index.php/drugs_c/comment"+drugid;
         return mUrl;
     }
 

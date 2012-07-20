@@ -48,7 +48,8 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		GetAllCommentsThread.GetAllCommentsHandler handler = new GetAllCommentsHandler(DrugDetailActivity.this);
-		GetAllCommentsThread commentsThread = new GetAllCommentsThread(handler);
+		GetAllCommentsThread commentsThread = new GetAllCommentsThread(handler,"10000");
+		//commentsThread.start();
 		super.onResume();
 	}
 
@@ -108,6 +109,10 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 		 String drugid =  intent.getStringExtra("detail");
 		//System.out.println("hashmap"+drugid);
 		 
+		 
+         daodefault = new SQLiteDatabaseDao();
+		 daodefault.getAllData(drugid);
+		 
 		 list = (ListView) contentView.findViewById(R.id.drugdetail_information_listview);
 		 list.setDivider(null);
 	     listItemAdapter = new SimpleAdapter(DrugDetailActivity.this,
@@ -117,6 +122,7 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 	        		new int[]{R.id.drugdetail_title,R.id.drugdetail_description}
 	        		);
 	     list.setAdapter(listItemAdapter);
+		
 	     
 		 
 		 userCommentsText = (TextView)contentView.findViewById(R.id.drugdetail_commment_textview);
@@ -130,14 +136,11 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 		 CommentslistItemAdapter = new CommentsAdapter(this, null);
 		 mComments = new ArrayList<Comments>();
 		 mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
+		 mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
+		 userCommentsListView.setAdapter(CommentslistItemAdapter);
 		 CommentslistItemAdapter.setData(mComments);
 		 //userCommentsListView.addHeaderView(contentView);
-		 userCommentsListView.setAdapter(CommentslistItemAdapter);
-		 
-		 daodefault = new SQLiteDatabaseDao();
-		 
-		 daodefault.getAllData(drugid);
-		
+		 contentView.requestLayout();
 	     return contentView;
 	}
 	

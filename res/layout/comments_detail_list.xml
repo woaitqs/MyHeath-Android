@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:paddingBottom="4dip"
     android:paddingLeft="12dip"
-    android:paddingRight="12dip" >
+    android:paddingRight="2dip" >
     <TextView
         android:id="@+id/comments_detail"
         android:layout_width="wrap_content"
@@ -13,11 +13,14 @@
         android:paddingTop="6dip"
         android:textColor="@color/black"
         android:textSize="18dip" />
+
     <RatingBar
-	    android:id="@+id/comments_points_ratingBar"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_toRightOf="@id/comments_detail" />
+        android:id="@+id/comments_points_ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/comments_detail" 
+        style="?android:attr/ratingBarStyleSmall"  />
+
     <TextView
         android:id="@+id/comments_username"
         android:layout_width="wrap_content"
@@ -25,7 +28,7 @@
         android:paddingTop="6dip"
         android:textColor="@color/black"
         android:textSize="15dip"
-        android:layout_below="@id/comments_detail" />
+        android:layout_below="@id/comments_points_ratingBar" />
     <TextView
         android:id="@+id/comments_time"
         android:layout_width="wrap_content"
@@ -33,5 +36,5 @@
         android:paddingTop="6dip"
         android:textColor="@color/black"
         android:textSize="15dip"
-        android:layout_toRightOf="@id/comments_username" />
+        android:layout_below="@id/comments_username" />
 </RelativeLayout>
