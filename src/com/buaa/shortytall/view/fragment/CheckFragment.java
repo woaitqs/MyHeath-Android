@@ -3,6 +3,7 @@ package com.buaa.shortytall.view.fragment;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.ActionBar.Tab;
 import com.buaa.shortytall.MyHealth;
 import com.buaa.shortytall.R;
+import com.buaa.shortytall.activity.DiseaseListActivity;
 
 public class CheckFragment extends New_BaseFragment implements OnTouchListener{
 
@@ -65,7 +67,7 @@ public class CheckFragment extends New_BaseFragment implements OnTouchListener{
         loadData();
     }
 
-    private void popOut(LocationData data){
+    private void popOut(final LocationData data){
         View mOverlay = mInflater.inflate(R.layout.overlay_pop, null);
         TextView title = (TextView)mOverlay.findViewById(R.id.overlay_title);
         TextView description = (TextView)mOverlay.findViewById(R.id.overlay_description);
@@ -78,7 +80,9 @@ public class CheckFragment extends New_BaseFragment implements OnTouchListener{
             
             @Override
             public void onClick(View v) {
-                
+                Intent intent = new Intent(context, DiseaseListActivity.class);
+                intent.putExtra(MyHealth.Bundle_keys.DISEASE_TYPE, data.type);
+                startActivity(intent);
             }
         });
         

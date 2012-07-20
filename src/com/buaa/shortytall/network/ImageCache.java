@@ -1,10 +1,14 @@
 package com.buaa.shortytall.network;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.ref.SoftReference;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -44,13 +48,13 @@ public class ImageCache {
 	private static boolean STORAGE_ON = false;
 	private Handler handler;
 	
-	private static DefaultHttpClient mHttpClient = null;
+	private DefaultHttpClient mHttpClient = null;
 	
-	static{
-		if(mHttpClient == null){
-			mHttpClient = new DefaultHttpClient();
-		}
-	}
+//	static{
+//		if(mHttpClient == null){
+//			mHttpClient = new DefaultHttpClient();
+//		}
+//	}
 	
 	//lock for url map
 	private Object urlMapLock = new Object();
@@ -111,7 +115,7 @@ public class ImageCache {
 	private Bitmap getBitmapFromSDCard(String url){
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             Bitmap bmp;
-            String filePathStr = IMAGE_FILE_FOLDER_PATH + MD5Util.encodeByMD5(url) + ".jpg";
+            String filePathStr = IMAGE_FILE_FOLDER_PATH + MD5Util.encodeByMD5(url) + ".png";
             File file = new File(filePathStr);
             if (!file.exists()) {
                 return null;
@@ -193,7 +197,29 @@ public class ImageCache {
 		
 	}
 	
-	private byte[] fetchImg(HttpGet httpGet){
+	/**
+     * 下载图片,以字节数组返
+     */
+    public static byte[] downLoadImage(String path) throws Exception {
+        
+        URL url = new URL(path);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setConnectTimeout(5 * 1000);
+        InputStream inStream = conn.getInputStream();
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[100 * 1024];
+        int len = -1;
+        while ((len = inStream.read(buffer)) != -1) {
+            outStream.write(buffer, 0, len);
+        }
+        outStream.close();
+        inStream.close();
+        return outStream.toByteArray();
+    }
+	
+	@SuppressWarnings("unused")
+    private byte[] fetchImg(HttpGet httpGet){
 		//Http
 		HttpParams params = new BasicHttpParams();
 		HttpConnectionParams.setSoTimeout(params, TIMEOUT);
@@ -237,7 +263,12 @@ public class ImageCache {
 			}
 		}
 		
-		byte[] imgbytes = fetchImg(new HttpGet(url));
+		byte[] imgbytes = null;
+        try {
+            imgbytes = downLoadImage(url);
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
 		if (imgbytes == null){
 		    return null;
 		}

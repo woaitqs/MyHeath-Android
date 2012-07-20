@@ -42,9 +42,13 @@ public class MyHealth extends Application{
         public static final int GET_ALLNEWS_fAILED = 1;
         public static final int FLASH_IMG_FINISHED = 2;
         public static final int IMG_LOADED_COMPLETED = 3;
+        public static final int GET_NEWS_DETAIL_SUCCESSED = 4;
+        public static final int GET_NEWS_DETAIL_FAILED= 5;
     }
     
     public static class Bundle_keys{
         public static final String NEWS_JSON = "news_json";
+        public static final String DISEASE_TYPE = "disease_type";
+        public static final String DETAIL_JSON = "detail_json";
     }
 }

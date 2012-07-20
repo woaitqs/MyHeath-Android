@@ -57,7 +57,7 @@ public class JsonUtil {
                     .setContent(news.getString(Keys.DETAILS))
                     .setDate(paresTimeLine(news.getLong(Keys.PUBLISH_TIME)))
                     .setId(news.getString(Keys._ID)).build();
-                    
+                    Log.d("id", news.getString(Keys._ID));
                     allnews.add(newsitem);
                 }
             }

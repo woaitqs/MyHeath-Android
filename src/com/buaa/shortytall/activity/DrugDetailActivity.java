@@ -88,7 +88,7 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 	private void initNavigationBar(){
         mNavigationBar.setTitleContent(R.string.app_name);
         mNavigationBar.setLeftImage(R.drawable.more);
-        Intent intent=new Intent(DrugDetailActivity.this,SearchActivity.class);
+        Intent intent=new Intent(DrugDetailActivity.this,New_MainActivity.class);
         mNavigationBar.setReback(intent);
         mNavigationBar.setVisibility(View.GONE);
     }

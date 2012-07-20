@@ -11,10 +11,11 @@ import android.os.Message;
 import com.buaa.shortytall.MyHealth;
 import com.buaa.shortytall.network.AbstractNetWorkThread;
 
-public class GetAllNewsThread extends AbstractNetWorkThread implements Runnable{
+public class GetNewsDetailThread extends AbstractNetWorkThread implements Runnable{
 
     private String mUrl;
-    private GetAllNewsHandler handler;
+    private String mId;
+    private GetNewsDetailHandler handler;
     
     @Override
     public void run() {
@@ -23,12 +24,12 @@ public class GetAllNewsThread extends AbstractNetWorkThread implements Runnable{
             Message msg = new Message();
             if (result != null ){
                 Bundle mBundle = new Bundle();
-                mBundle.putString(MyHealth.Bundle_keys.NEWS_JSON, result);
+                mBundle.putString(MyHealth.Bundle_keys.DETAIL_JSON, result);
                 msg.setData(mBundle);
-                msg.what = MyHealth.Msg.GET_ALLNEWS_SUCCESSED;
+                msg.what = MyHealth.Msg.GET_NEWS_DETAIL_SUCCESSED;
             } else{
                 // network error
-                msg.what = MyHealth.Msg.GET_ALLNEWS_fAILED;
+                msg.what = MyHealth.Msg.GET_NEWS_DETAIL_FAILED;
             }
             handler.sendMessage(msg);
         } catch (ClientProtocolException e) {
@@ -38,21 +39,22 @@ public class GetAllNewsThread extends AbstractNetWorkThread implements Runnable{
         }
     }
     
-    public GetAllNewsThread(GetAllNewsHandler handler){
+    public GetNewsDetailThread(GetNewsDetailHandler handler, String id){
         this.handler = handler;
+        this.mId = id;
     }
     
-    public static interface GetAllNewsListener{
+    public static interface GetNewsDetailLisntener{
         
-        public void getAllNewsSuccessed(String json);
+        public void getNewsDetailSuccessed(String json);
         
-        public void getAllNewsFailed();
+        public void getNewsDetailFailed();
     }
     
-    public static class GetAllNewsHandler extends Handler{
-        private GetAllNewsListener listener;
+    public static class GetNewsDetailHandler extends Handler{
+        private GetNewsDetailLisntener listener;
         
-        public GetAllNewsHandler(GetAllNewsListener listener){
+        public GetNewsDetailHandler(GetNewsDetailLisntener listener){
             this.listener = listener;
         }
 
@@ -63,10 +65,10 @@ public class GetAllNewsThread extends AbstractNetWorkThread implements Runnable{
             case MyHealth.Msg.GET_ALLNEWS_SUCCESSED:
                 Bundle bundle = msg.getData();
                 String json = bundle.getString(MyHealth.Bundle_keys.NEWS_JSON);
-                listener.getAllNewsSuccessed(json);
+                listener.getNewsDetailSuccessed(json);
                 break;
             case MyHealth.Msg.GET_ALLNEWS_fAILED:
-                listener.getAllNewsFailed();
+                listener.getNewsDetailFailed();
                 break;
             default:
                 break;
@@ -77,8 +79,8 @@ public class GetAllNewsThread extends AbstractNetWorkThread implements Runnable{
 
     @Override
     public String getRequestUrl() {
-        mUrl = MyHealth.Url.BASE_URL +  "/index.php/news_c/all/format/json";
+        mUrl = MyHealth.Url.BASE_URL +  "/index.php/news_c/spec/id/%s";
+        mUrl = String.format(mUrl, mId);
         return mUrl;
     }
-
 }
