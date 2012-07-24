@@ -3,6 +3,8 @@ package com.buaa.shortytall.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -11,14 +13,17 @@ import com.actionbarsherlock.view.MenuItem;
 public abstract class DefaultActivity extends SherlockActivity {
 
     protected Context context;
-    
-    @Override
+   
+
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         context = getContext();
         setDisplayHomeAsUpEnabled(true);
         setActionBarTitle(getActionBarTitle());
         super.onCreate(savedInstanceState);
     }
+    
+  
 
     protected abstract String getActionBarTitle();
     

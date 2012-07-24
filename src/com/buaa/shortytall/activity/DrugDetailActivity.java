@@ -3,26 +3,42 @@ package com.buaa.shortytall.activity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.drm.DrmStore.Action;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.actionbarsherlock.internal.view.menu.ActionMenu;
+import com.actionbarsherlock.internal.view.menu.ActionMenuItem;
+import com.actionbarsherlock.view.ActionProvider;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.buaa.shortytall.R;
 import com.buaa.shortytall.adapter.CommentsAdapter;
 import com.buaa.shortytall.bean.Comments;
+import com.buaa.shortytall.bean.News;
 import com.buaa.shortytall.thread.GetAllCommentsThread;
 import com.buaa.shortytall.thread.GetAllCommentsThread.GetAllCommentsHandler;
 import com.buaa.shortytall.thread.GetAllCommentsThread.GetAllCommentsListener;
+import com.buaa.shortytall.util.JsonUtil;
 
 
 
-public class DrugDetailActivity extends BaseActivity implements GetAllCommentsListener{
+public class DrugDetailActivity extends DefaultActivity implements GetAllCommentsListener{
+
+
 
 	private SQLiteDatabase mDb;
 	private SQLiteDatabaseDao daodefault;
@@ -45,19 +61,56 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 	
 	
 	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		initViews();
+	}
+
+	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		GetAllCommentsThread.GetAllCommentsHandler handler = new GetAllCommentsHandler(DrugDetailActivity.this);
 		GetAllCommentsThread commentsThread = new GetAllCommentsThread(handler,"10000");
-		//commentsThread.start();
+		commentsThread.start();
 		super.onResume();
+	}
+	
+	
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		//menu.clear();
+		 menu.clear();
+	     MenuInflater inflater = getSupportMenuInflater();
+	     inflater.inflate(R.menu.drugdetailfunction, menu);
+	     return true;
 	}
 
 	@Override
-	public void getAllCommentsSuccessed() {
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
-		
+		if(item.getTitle().equals(getString(R.string.personal_recommend))){
+    		//Toast.makeText(New_MainActivity.this, "test", Toast.LENGTH_SHORT).show();
+			new AlertDialog.Builder(context)
+			.setTitle("推荐理由")
+			.setIcon(R.drawable.ic_launcher)
+			.setView(new EditText(context))
+			.setPositiveButton("确定", null)
+			.setNegativeButton("取消", null)
+			.show();				
+    	}
+		if(item.getTitle().equals(getString(R.string.personal_store))){
+    		//Toast.makeText(New_MainActivity.this, "test", Toast.LENGTH_SHORT).show();
+			new AlertDialog.Builder(context).setMessage("收藏成功").setPositiveButton("确定", null).show();			
+    	}
+		if(item.getTitle().equals(getString(R.string.sendit_weibo))){
+    		//Toast.makeText(New_MainActivity.this, "test", Toast.LENGTH_SHORT).show();
+			new AlertDialog.Builder(context).setMessage("分享到微博成功").setPositiveButton("确定", null).show();			
+    	}
+		return super.onOptionsItemSelected(item);
 	}
+
+	
 
 	@Override
 	public void getAllCommentsFailed() {
@@ -65,46 +118,9 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 		
 	}
 	
-	@Override
-    protected Context setContext() {
-    	return DrugDetailActivity.this;
-	    }
-	
-	@Override
-	protected void initWindows() {
+	protected void initViews() {
 		// TODO Auto-generated method stub
-		//getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-	}
-
-	@Override
-	protected void initListeners() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void initThreads() {
-		// TODO Auto-generated method stub
-
-	}
-	
-	private void initNavigationBar(){
-        mNavigationBar.setTitleContent(R.string.app_name);
-        mNavigationBar.setLeftImage(R.drawable.more);
-        Intent intent=new Intent(DrugDetailActivity.this,New_MainActivity.class);
-        mNavigationBar.setReback(intent);
-        mNavigationBar.setVisibility(View.GONE);
-    }
-	private void initFooterBar(){
-       mFootBar.setVisibility(View.GONE);    
-    }
-	@Override
-	protected View initViews() {
-		// TODO Auto-generated method stub
-		 View contentView = mInflater.inflate(R.layout.drugdetail, null);
-		 initNavigationBar();
-		 initFooterBar();
+		 setContentView(R.layout.drugdetail);
 		 Intent intent=getIntent();
 		 String drugid =  intent.getStringExtra("detail");
 		//System.out.println("hashmap"+drugid);
@@ -113,7 +129,7 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
          daodefault = new SQLiteDatabaseDao();
 		 daodefault.getAllData(drugid);
 		 
-		 list = (ListView) contentView.findViewById(R.id.drugdetail_information_listview);
+		 list = (ListView)findViewById(R.id.drugdetail_information_listview);
 		 list.setDivider(null);
 	     listItemAdapter = new SimpleAdapter(DrugDetailActivity.this,
 	        		listData,
@@ -125,23 +141,22 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 		
 	     
 		 
-		 userCommentsText = (TextView)contentView.findViewById(R.id.drugdetail_commment_textview);
-		 pointsText = (TextView)contentView.findViewById(R.id.drugdetail_points_textview);
-		 pointsBar = (RatingBar)contentView.findViewById(R.id.drugdetail_points_ratingBar);
-		 pointsBar.setMax(5);
-		 pointsBar.setRating((float) 4.5);
+		 userCommentsText = (TextView)findViewById(R.id.drugdetail_commment_textview);
+		 pointsText = (TextView)findViewById(R.id.drugdetail_points_textview);
+		 pointsBar = (RatingBar)findViewById(R.id.drugdetail_points_ratingBar);
+		 pointsBar.setNumStars(5);
+		 pointsBar.setStepSize((float)0.5);
+		 //pointsBar.setRating((float) 4.5);
 		 
-		 userCommentsListView = (ListView)contentView.findViewById(R.id.drugdetail_comment_listview);
+		 userCommentsListView = (ListView)findViewById(R.id.drugdetail_comment_listview);
 		 userCommentsListView.setDivider(null);
 		 CommentslistItemAdapter = new CommentsAdapter(this, null);
-		 mComments = new ArrayList<Comments>();
-		 mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
-		 mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
+		 //mComments = new ArrayList<Comments>();
+		 //mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
+		 //mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
 		 userCommentsListView.setAdapter(CommentslistItemAdapter);
-		 CommentslistItemAdapter.setData(mComments);
+		 //CommentslistItemAdapter.setData(mComments);
 		 //userCommentsListView.addHeaderView(contentView);
-		 contentView.requestLayout();
-	     return contentView;
 	}
 	
 	class SQLiteDatabaseDao {
@@ -219,6 +234,33 @@ public class DrugDetailActivity extends BaseActivity implements GetAllCommentsLi
 		}
 	}
 
+	@Override
+	protected String getActionBarTitle() {
+		// TODO Auto-generated method stub
+		return "Drug Detail";
+	}
+
+	@Override
+	protected Context getContext() {
+		// TODO Auto-generated method stub
+		return DrugDetailActivity.this;
+	}
+
+	@Override
+	public void getAllCommentsSuccessed(String json) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<Comments> data = JsonUtil.praseCommentsJson(json);
+		Comments totalcomment = data.get(0);
+		String commentstring = totalcomment.getmPoints();
+		float totalpoints = Float.parseFloat(commentstring);
+		pointsBar.setRating(totalpoints);
+		data.remove(0);
+		CommentslistItemAdapter.setData(data);
+		
+	}
+
+	
 	
 
 }

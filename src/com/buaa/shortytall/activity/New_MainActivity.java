@@ -16,11 +16,14 @@ import com.buaa.shortytall.view.fragment.HomeFragment;
 import com.buaa.shortytall.view.fragment.New_BaseFragment;
 import com.buaa.shortytall.view.fragment.SearchFragment;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.Toast;
 
 public class New_MainActivity extends New_BaseActivity {
 
@@ -129,6 +132,17 @@ public class New_MainActivity extends New_BaseActivity {
     }
 
     @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+    	
+    	if(item.getTitle().equals(getString(R.string.personal_center))){
+    		//Toast.makeText(New_MainActivity.this, "test", Toast.LENGTH_SHORT).show();
+    		Intent intent = new Intent(New_MainActivity.this,PersonProfileActivity.class);
+    		startActivity(intent);
+    	}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
     protected void initTabs() {
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         tabFragments.add(new HomeFragment(handler, this));

@@ -41,14 +41,15 @@ public class CommentsItem {
     }
 
     public void setTime(String mTime){
-    	Long timestamp = Long.parseLong(mTime);
+    	String time = mTime+"000";
+    	Long timestamp = Long.parseLong(time);
     	 CharSequence sysTimeStr = DateFormat.format("MMMM dd, yyyy h:mmaa", timestamp);
     	 this.mTime.setText(sysTimeStr);
     }
     
     public void setPoints(String mPoints) {
-        this.mPoints.setMax(5);
         this.mPoints.setNumStars(5);
+        this.mPoints.setStepSize((float)0.5);
         float stars = Float.parseFloat(mPoints);
         this.mPoints.setRating(stars);
     }

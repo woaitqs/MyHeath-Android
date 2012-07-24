@@ -151,11 +151,10 @@ public class SearchFragment extends New_BaseFragment{
     @Override
     protected void onInflated() {
         searchFlag = true;
-        //daodefault = new SQLiteDatabaseDao();
+        daodefault = new SQLiteDatabaseDao();
         
-//        searchTextView = (EditText)contentView.findViewById(R.id.search_drugname_edittext);
-//        searchButton = (Button)contentView.findViewById(R.id.search_drugname_button);
-        //searchSwitchButton = (Button)findViewById(R.id.search_drugname_switchbutton);
+        searchTextView = (EditText)contentView.findViewById(R.id.search_drugname_edittext);
+        searchButton = (Button)contentView.findViewById(R.id.search_drugname_button);
 
         searchSwitchSpinner = (Spinner)contentView.findViewById(R.id.search_switch_spinner);
         spinnerList.add("药品");
