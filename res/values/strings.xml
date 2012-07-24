@@ -16,11 +16,16 @@
     <!--drug detail  -->
     <string name="points">当前评分</string>
     <string name="drugdetail_comments">用户评论</string>
+    <string name="personal_store">收藏</string>
+    <string name="personal_recommend">推荐</string>
+    <string name="sendit_weibo">分享到微博</string>
     
     <!-- function -->
     <string name="more_function">更多功能</string>
     <string name="about_us">关于我们</string>
     <string name="query_doctor">咨询医生</string>
     <string name="personal_center">个人中心</string>
+    
+    
     
 </resources>

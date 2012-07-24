@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
-    <ListView
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <ListView
             android:id="@+id/drugdetail_information_listview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-    </ListView> 
+            android:layout_height="250dip" >
+        </ListView>
+    </LinearLayout>
+
 	<TextView
 	    android:id="@+id/drugdetail_commment_textview"
 	    android:layout_width="match_parent"
@@ -17,7 +23,7 @@
 	<ListView
             android:id="@+id/drugdetail_comment_listview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="100dip" >
     </ListView> 
 	<TextView
 	    android:id="@+id/drugdetail_points_textview"
@@ -28,6 +34,7 @@
 	<RatingBar
 	    android:id="@+id/drugdetail_points_ratingBar"
 	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content" />
+	    android:layout_height="wrap_content"
+	    style="?android:attr/ratingBarStyleIndicator" />
 
 </LinearLayout>
