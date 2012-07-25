@@ -78,6 +78,31 @@ public class JsonUtil {
         }
         return allnews;
     }
+    @SuppressWarnings("unchecked")
+	public static ArrayList<HashMap<String, Object>> prasePersonDrugJson(String json){
+
+    	ArrayList<HashMap<String, Object>> drugidlist=new ArrayList<HashMap<String, Object>>(); 
+        try {
+            
+            JSONObject jsonobject = new JSONObject(json);
+            if (jsonobject.getInt(Keys.ERRORCODE) == 0){
+                JSONArray drugs = jsonobject.getJSONArray("drugs_collected");
+                for (int i = 0 ; i < drugs.length(); i ++){
+                    JSONObject drug = (JSONObject)drugs.get(i);
+                    HashMap<String, Object> map = new HashMap<String, Object>();
+                    map.put("drug_id", drug.getString("drug_id"));
+                   
+                    map.put("drug_time", "收藏时间       "+paresTimeLine(drug.getLong("collect_time")));
+                   drugidlist.add(map);
+                  
+                    //System.out.println(news.getString(Keys.ICON)+"      "+news.getLong(Keys.PUBLISH_TIME)+"     ");
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return  drugidlist;
+    }
     public static ArrayList<HashMap<String, Object>> prasePersonalTaskJson(String json){
     	ArrayList<HashMap<String, Object>> listdata = new ArrayList<HashMap<String, Object>>();
         try {

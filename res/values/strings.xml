@@ -19,6 +19,7 @@
     <string name="personal_store">收藏</string>
     <string name="personal_recommend">推荐</string>
     <string name="sendit_weibo">分享到微博</string>
+    <string name="buy">购买链接</string>
     
     <!-- function -->
     <string name="more_function">更多功能</string>

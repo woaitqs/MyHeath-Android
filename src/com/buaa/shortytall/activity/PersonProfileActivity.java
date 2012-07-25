@@ -88,7 +88,11 @@ public class PersonProfileActivity extends DefaultActivity {
 		    	Intent intent=new Intent(PersonProfileActivity.this,ProfileTaskActivity.class);
 				startActivity(intent);
 		    }
- 		  
+ 		 if(valueTemp.equalsIgnoreCase("我的收藏"))
+		    {
+		    	Intent intent=new Intent(PersonProfileActivity.this,ProfileDrugActivity.class);
+				startActivity(intent);
+		    }
 			
 		}
 	};
