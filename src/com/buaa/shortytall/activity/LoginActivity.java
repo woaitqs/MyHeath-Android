@@ -1,12 +1,14 @@
 package com.buaa.shortytall.activity;
 
+import com.buaa.shortytall.R;
+
 import android.content.Context;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.buaa.shortytall.R;
+
 
 public class LoginActivity extends BaseActivity{
 

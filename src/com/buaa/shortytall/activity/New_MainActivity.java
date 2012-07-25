@@ -8,6 +8,7 @@ import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+
 import com.buaa.shortytall.R;
 import com.buaa.shortytall.adapter.ViewPagerAdapter;
 import com.buaa.shortytall.view.fragment.CalcFragment;
@@ -16,6 +17,7 @@ import com.buaa.shortytall.view.fragment.HomeFragment;
 import com.buaa.shortytall.view.fragment.New_BaseFragment;
 import com.buaa.shortytall.view.fragment.SearchFragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +25,7 @@ import android.os.Message;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class New_MainActivity extends New_BaseActivity {
@@ -31,6 +34,7 @@ public class New_MainActivity extends New_BaseActivity {
     protected ArrayList<New_BaseFragment> tabFragments;
     private New_BaseFragment currentTabFragment;
     protected ViewPagerAdapter viewPagerAdapter;
+    private String myQusetion;
     
     protected TabListener tabListener = new TabListener() {
         
@@ -138,6 +142,18 @@ public class New_MainActivity extends New_BaseActivity {
     		//Toast.makeText(New_MainActivity.this, "test", Toast.LENGTH_SHORT).show();
     		Intent intent = new Intent(New_MainActivity.this,PersonProfileActivity.class);
     		startActivity(intent);
+    	}
+    	if(item.getTitle().equals(getString(R.string.query_doctor))){
+    		//Toast.makeText(New_MainActivity.this, "test", Toast.LENGTH_SHORT).show();
+    		EditText myEditText = new EditText(this); 
+    		new AlertDialog.Builder(New_MainActivity.this)
+			.setTitle("资讯内容")
+			.setIcon(R.drawable.ic_launcher)
+			.setView(myEditText)
+			.setPositiveButton("确定", null)
+			.setNegativeButton("取消", null)
+			.show();
+    		myQusetion = myEditText.getText().toString();
     	}
 		return super.onOptionsItemSelected(item);
 	}

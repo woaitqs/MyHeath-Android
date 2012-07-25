@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.buaa.shortytall.R;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,7 +49,7 @@ public class PersonProfileActivity extends DefaultActivity {
 		 
 		 listdata.add(createItem(R.drawable.search,"我的资讯"));
    		 listdata.add(createItem(R.drawable.search,"我的问题"));
-		 listdata.add(createItem(R.drawable.search,"我的关注"));
+		 listdata.add(createItem(R.drawable.search,"我的任务"));
 		 listdata.add(createItem(R.drawable.search,"站内信"));
 		 listdata.add(createItem(R.drawable.search,"我的收藏"));
 		 listdata.add(createItem(R.drawable.search,"注销登陆"));
@@ -77,6 +78,17 @@ public class PersonProfileActivity extends DefaultActivity {
  		    	Intent intent=new Intent(PersonProfileActivity.this,ProfileNewsActivity.class);
  				startActivity(intent);
  		    }
+ 		   if(valueTemp.equalsIgnoreCase("我的问题"))
+		    {
+		    	Intent intent=new Intent(PersonProfileActivity.this,ProfileQusetionAndAnswerActivity.class);
+				startActivity(intent);
+		    }
+ 		  if(valueTemp.equalsIgnoreCase("我的任务"))
+		    {
+		    	Intent intent=new Intent(PersonProfileActivity.this,ProfileTaskActivity.class);
+				startActivity(intent);
+		    }
+ 		  
 			
 		}
 	};

@@ -1,5 +1,6 @@
 package com.buaa.shortytall.adapter;
 
+
 import com.buaa.shortytall.R;
 
 import android.content.Context;

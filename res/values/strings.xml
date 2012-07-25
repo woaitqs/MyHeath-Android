@@ -26,6 +26,8 @@
     <string name="query_doctor">咨询医生</string>
     <string name="personal_center">个人中心</string>
     
+    <!-- question answer -->
+    <string name="moreAnswer">更多答案</string>
     
     
 </resources>

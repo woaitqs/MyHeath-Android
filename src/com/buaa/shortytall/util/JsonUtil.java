@@ -3,6 +3,7 @@ package com.buaa.shortytall.util;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -14,6 +15,7 @@ import android.util.Log;
 import com.buaa.shortytall.bean.Comments;
 import com.buaa.shortytall.bean.News;
 import com.buaa.shortytall.bean.News.NewsBuider;
+import com.buaa.shortytall.bean.QuestionAnswer;
 
 public class JsonUtil {
 
@@ -39,6 +41,8 @@ public class JsonUtil {
         public static final String COMMENTS = "comments";
         public static final String SCORE_AVG = "score_ave";
         public static final String NEWS_INDIVIDUAL = "news_individual";
+        public static final String TASKS_INDIVIDUAL = "tasks_individual";
+        public static final String QUESTIONS = "questions";
         
     }
     
@@ -74,6 +78,27 @@ public class JsonUtil {
         }
         return allnews;
     }
+    public static ArrayList<HashMap<String, Object>> prasePersonalTaskJson(String json){
+    	ArrayList<HashMap<String, Object>> listdata = new ArrayList<HashMap<String, Object>>();
+        try {
+            
+            JSONObject jsonobject = new JSONObject(json);
+            if (jsonobject.getInt(Keys.ERRORCODE) == 0){
+                JSONArray tasks = jsonobject.getJSONArray(Keys.TASKS_INDIVIDUAL);
+                for (int i = 0 ; i < tasks.length(); i ++){
+                    JSONObject task = (JSONObject)tasks.get(i);
+                    HashMap<String, Object> map = new HashMap<String, Object>();
+   			        map.put("task_title", task.getString("title"));
+   			        map.put("task_description", task.getString("description"));
+                    //Log.d("id", news.getString(Keys._ID));
+   			        listdata.add(map);
+                }      
+            }
+        } catch (JSONException e) {   
+            e.printStackTrace();
+        }
+        return listdata;
+    }
     public static ArrayList<News> prasePersonalNewsJson(String json){
         ArrayList<News> allnews = new ArrayList<News>();
         try {
@@ -85,10 +110,9 @@ public class JsonUtil {
                     JSONObject news = (JSONObject)newses.get(i);
                     NewsBuider builder = new NewsBuider();
                     News newsitem = builder.build();
-                    newsitem = builder.setAvatart("http://106.187.36.132:82/application/resources/news_imgs/news5002c8f887f3fb4017000001.jpg")
+                    newsitem = builder.setAvatart(news.getString(Keys.ICON))
                     .setTitle(news.getString(Keys.TITLE))
-                    .setContent(news.getString(Keys.DESCRIPTION))
-                    .setDate(paresTimeLine((long)1342359800))
+                    .setDate(paresTimeLine(news.getLong(Keys.PUBLISH_TIME)))
                     .setId(news.getString(Keys.NEWS_ID)).build();
                     //Log.d("id", news.getString(Keys._ID));
                     allnews.add(newsitem);
@@ -121,5 +145,34 @@ public class JsonUtil {
             e.printStackTrace();
         }
         return allcomments;
+    }
+    
+    public static ArrayList<QuestionAnswer> prasePersonalQuestionJson(String json){
+        ArrayList<QuestionAnswer> allquestions = new ArrayList<QuestionAnswer>();
+        try {
+            
+            JSONObject jsonobject = new JSONObject(json);
+            if (jsonobject.getInt(Keys.ERRORCODE) == 0){
+                JSONArray questions = jsonobject.getJSONArray(Keys.QUESTIONS);
+                for (int i = 0 ; i < questions.length(); i ++){
+                	
+                    JSONObject question = (JSONObject)questions.get(i);
+                    QuestionAnswer item = new QuestionAnswer();
+                    item.setQtitle(question.getString("title"));
+                    item.setQconsulttime(question.getString("consult_time"));
+                    item.setQdescription(question.getString("description"));
+                    JSONArray answers = question.getJSONArray("answers");
+                    JSONObject answer = (JSONObject) answers.get(0);
+                    item.setAconsulttime(answer.getString("answer_time"));
+                    item.setAName(answer.getString("expert_name"));
+                    item.setAdescription(answer.getString("description"));
+                    //Log.d("id", news.getString(Keys._ID));
+                    allquestions.add(item); 
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return allquestions;
     }
 }
