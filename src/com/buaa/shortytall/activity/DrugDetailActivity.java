@@ -28,7 +28,9 @@ import com.actionbarsherlock.view.MenuItem;
 
 import com.buaa.shortytall.R;
 import com.buaa.shortytall.adapter.CommentsAdapter;
+import com.buaa.shortytall.adapter.DrugsAdapter;
 import com.buaa.shortytall.bean.Comments;
+import com.buaa.shortytall.bean.Drug;
 import com.buaa.shortytall.bean.News;
 import com.buaa.shortytall.thread.GetAllCommentsThread;
 import com.buaa.shortytall.thread.GetAllCommentsThread.GetAllCommentsHandler;
@@ -44,11 +46,7 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
 	private SQLiteDatabase mDb;
 	private SQLiteDatabaseDao daodefault;
 	
-	private ListView list;
-	private TextView userCommentsText;
-	private TextView pointsText;
-	private RatingBar pointsBar;
-	private ListView userCommentsListView;
+	private ListView druglistview;
 	private ArrayList<Comments> mComments;
 	 
 	// 存储数据的数组列表
@@ -56,8 +54,8 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
 	//存储评论数据
 	private ArrayList<HashMap<String, Object>> CommentslistData = new ArrayList<HashMap<String,Object>>();
 	// 适配器
-	private	SimpleAdapter listItemAdapter;
-	private	CommentsAdapter CommentslistItemAdapter;
+	private	DrugsAdapter listItemAdapter;
+	private String initdrugname;
 	
 	
 	
@@ -70,9 +68,13 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
-		GetAllCommentsThread.GetAllCommentsHandler handler = new GetAllCommentsHandler(DrugDetailActivity.this);
-		GetAllCommentsThread commentsThread = new GetAllCommentsThread(handler,"10000");
-		commentsThread.start();
+		 Intent intent=getIntent();
+		 String drugid =  intent.getStringExtra("detail");
+         daodefault = new SQLiteDatabaseDao();
+		 daodefault.getAllData(drugid);
+		 GetAllCommentsThread.GetAllCommentsHandler handler = new GetAllCommentsHandler(DrugDetailActivity.this);
+	     GetAllCommentsThread commentsThread = new GetAllCommentsThread(handler,"10000");
+	     commentsThread.start();
 		super.onResume();
 	}
 	
@@ -106,7 +108,15 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
     	}
 		if(item.getTitle().equals(getString(R.string.sendit_weibo))){
     		//Toast.makeText(New_MainActivity.this, "test", Toast.LENGTH_SHORT).show();
-			new AlertDialog.Builder(context).setMessage("分享到微博成功").setPositiveButton("确定", null).show();			
+			EditText myedittext = new EditText(context);
+			myedittext.setHint(initdrugname+"真得不错");
+			new AlertDialog.Builder(context)
+			.setTitle("分享到微博")
+			.setIcon(R.drawable.ic_launcher)
+			.setView(myedittext)
+			.setPositiveButton("确定", null)
+			.setNegativeButton("取消", null)
+			.show();		
     	}
 		return super.onOptionsItemSelected(item);
 	}
@@ -122,42 +132,17 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
 	protected void initViews() {
 		// TODO Auto-generated method stub
 		 setContentView(R.layout.drugdetail);
-		 Intent intent=getIntent();
-		 String drugid =  intent.getStringExtra("detail");
-		//System.out.println("hashmap"+drugid);
-		 
-		 
-         daodefault = new SQLiteDatabaseDao();
-		 daodefault.getAllData(drugid);
-		 
-		 list = (ListView)findViewById(R.id.drugdetail_information_listview);
-		 list.setDivider(null);
-	     listItemAdapter = new SimpleAdapter(DrugDetailActivity.this,
-	        		listData,
-	        		R.layout.drug_detail_list,
-	        		new String[]{"drugdetail_title","drugdetail_description"},
-	        		new int[]{R.id.drugdetail_title,R.id.drugdetail_description}
-	        		);
-	     list.setAdapter(listItemAdapter);
 		
-	     
 		 
-		 userCommentsText = (TextView)findViewById(R.id.drugdetail_commment_textview);
-		 pointsText = (TextView)findViewById(R.id.drugdetail_points_textview);
-		 pointsBar = (RatingBar)findViewById(R.id.drugdetail_points_ratingBar);
-		 pointsBar.setNumStars(5);
-		 pointsBar.setStepSize((float)0.5);
-		 //pointsBar.setRating((float) 4.5);
+		
 		 
-		 userCommentsListView = (ListView)findViewById(R.id.drugdetail_comment_listview);
-		 userCommentsListView.setDivider(null);
-		 CommentslistItemAdapter = new CommentsAdapter(this, null);
-		 //mComments = new ArrayList<Comments>();
-		 //mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
-		 //mComments.add(new Comments("yuxiao", "good description", "4.5", "1342515889935"));
-		 userCommentsListView.setAdapter(CommentslistItemAdapter);
-		 //CommentslistItemAdapter.setData(mComments);
-		 //userCommentsListView.addHeaderView(contentView);
+		 listItemAdapter = new DrugsAdapter(context, null);
+		 
+		 druglistview = (ListView)findViewById(R.id.drugdetail_information_listview);
+		 
+		 druglistview.setAdapter(listItemAdapter);
+		 
+		 
 	}
 	
 	class SQLiteDatabaseDao {
@@ -175,6 +160,7 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
 		 
 			 Cursor c = mDb.rawQuery("select cnName,commonName,engName,component,indication,pack,dosage,adverseReactions,contraindications,precautions,drugInteractions,createDate,modifyDate from drug where id = ?" , new String[] {id.toString()});
 		     int columnsSize = c.getColumnCount();
+		     listItemAdapter.setDrugnumber(columnsSize);
 		     //System.out.println("cursor size"+columnsSize);
 		     listData = new ArrayList<HashMap<String, Object>>();
 		 // 获取表的内容
@@ -183,17 +169,24 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
 				 for(int i=0;i<columnsSize;i++)
 				 { 
 				
-				    HashMap<String, Object> map = new HashMap<String, Object>();
-			        map.put("drugdetail_title", this.changeName(i));
+				    Drug drugitem = new Drug();
+				    drugitem.setmTitle(this.changeName(i));
+				  
 			        String description =  c.getString(i);
 			        if(description == null)
 			        {
 			        	description = new String("暂无");
 			        }
 			        String descriptionreplace =  description.replace("<br/>", "");
+			        if(i==0)
+				    {
+				    	initdrugname = descriptionreplace;
+				    }
+			        //map.put("drugdetail_description",descriptionreplace);
+			        drugitem.setmDrugDescription(descriptionreplace);
+			        drugitem.setFlag(1);
 			        
-			        map.put("drugdetail_description",descriptionreplace);
-			        listData.add(map);
+			        listItemAdapter.setDrugData(drugitem);
 			      }
 			 }
 			 c.close();	
@@ -238,7 +231,7 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
 	@Override
 	protected String getActionBarTitle() {
 		// TODO Auto-generated method stub
-		return "Drug Detail";
+		return "药品详情";
 	}
 
 	@Override
@@ -252,13 +245,9 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
 		// TODO Auto-generated method stub
 		
 		ArrayList<Comments> data = JsonUtil.praseCommentsJson(json);
-		Comments totalcomment = data.get(0);
-		String commentstring = totalcomment.getmPoints();
-		float totalpoints = Float.parseFloat(commentstring);
-		pointsBar.setRating(totalpoints);
-		data.remove(0);
-		CommentslistItemAdapter.setData(data);
-		
+		int sizeofComments =  data.size()-1;
+		listItemAdapter.setCommentsData(data);
+		listItemAdapter.setCommentsnumber(sizeofComments);
 	}
 
 	

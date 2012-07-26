@@ -3,38 +3,15 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+
         <ListView
             android:id="@+id/drugdetail_information_listview"
             android:layout_width="match_parent"
-            android:layout_height="250dip" >
+            android:layout_height="wrap_content" >
         </ListView>
-    </LinearLayout>
+ 
 
-	<TextView
-	    android:id="@+id/drugdetail_commment_textview"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/drugdetail_comments">   
-	</TextView>
-	<ListView
-            android:id="@+id/drugdetail_comment_listview"
-            android:layout_width="match_parent"
-            android:layout_height="100dip" >
-    </ListView> 
-	<TextView
-	    android:id="@+id/drugdetail_points_textview"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/points">   
-	</TextView>
-	<RatingBar
-	    android:id="@+id/drugdetail_points_ratingBar"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    style="?android:attr/ratingBarStyleIndicator" />
+	
+	
 
 </LinearLayout>
