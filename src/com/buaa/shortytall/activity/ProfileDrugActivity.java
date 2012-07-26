@@ -54,7 +54,7 @@ public class ProfileDrugActivity extends DefaultActivity implements GetAllDrugLi
 	private	SimpleAdapter listItemAdapter;
 	private MyThread thread;
 	
-	    
+	//ui进程的handler    
 	Handler handler= new Handler() {
 	      @Override
 	      public void handleMessage(Message msg) {
