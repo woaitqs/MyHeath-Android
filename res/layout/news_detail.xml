@@ -16,9 +16,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/news_detail_comment_area"
+            android:background="@drawable/aa_tab_background"
+            >
+            <EditText 
+	            android:id="@+id/news_detail_comment_text"
+	            android:layout_height="wrap_content"
+	            android:layout_width="0dip"
+	            android:layout_weight="4"
+	            android:hint="@string/news_detail_comment"
+            />
+            <Button 
+                android:layout_height="wrap_content"
+	            android:layout_width="0dip"
+	            android:layout_weight="1"
+	            android:text="提交"
+                />
+        </LinearLayout>
+        
         <ScrollView
             android:layout_width="match_parent"
             android:id="@+id/news_detail_scrollview"
+            android:layout_above="@id/news_detail_comment_area"
             android:layout_height="match_parent" >
 
             <LinearLayout
@@ -61,26 +85,6 @@
                     android:textSize="@dimen/normal_font_size" />
             </LinearLayout>
         </ScrollView>
-        <LinearLayout 
-            android:layout_width="match_parent"
-            android:layout_height="48dip"
-            android:orientation="horizontal"
-            android:layout_below="@id/news_detail_scrollview"
-            android:background="@drawable/aa_tab_background"
-            >
-            <EditText 
-	            android:id="@+id/news_detail_comment_text"
-	            android:layout_height="wrap_content"
-	            android:layout_width="0dip"
-	            android:layout_weight="4"
-	            android:hint="@string/news_detail_comment"
-            />
-            <Button 
-                android:layout_height="wrap_content"
-	            android:layout_width="0dip"
-	            android:layout_weight="1"
-                />
-        </LinearLayout>
         
     </RelativeLayout>
 

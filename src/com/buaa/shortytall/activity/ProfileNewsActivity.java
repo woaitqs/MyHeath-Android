@@ -73,7 +73,7 @@ public class ProfileNewsActivity extends DefaultActivity implements GetAllPerson
 		 ArrayList<News> data = JsonUtil.prasePersonalNewsJson(json);
 	     mNewsAdapter.setData(data);   
 		
-	}
+	} 
 
 
 	@Override
