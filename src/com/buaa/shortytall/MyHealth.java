@@ -29,7 +29,7 @@ public class MyHealth extends Application{
         public static final int BREAST = 102;
         public static final int BELLY = 103;
         public static final int UPPER_LIMB= 104;
-        public static final int LOVER_LIMB = 105;
+        public static final int LOWER_LIMB = 105;
         public static final int REPRODUCTIVE = 106;
     }
     
@@ -56,5 +56,12 @@ public class MyHealth extends Application{
         public static final String COMMENTS_JSON = "comments_json";
         public static final String DISEASE_TYPE = "disease_type";
         public static final String DETAIL_JSON = "detail_json";
+        public static final String NEWS_ID = "news_id";
+        public static final String DISEASE = "disease";
+        
+        public static final String DISEASE_NAME = "disease_name";
+        public static final String DISEASE_DESCRIPTION = "disease_description";
+        public static final String DISEASE_DRUGS = "disease_drugs";
+        public static final String DISEASE_TIPS = "disease_tips";
     }
 }

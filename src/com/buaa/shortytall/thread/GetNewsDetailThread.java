@@ -7,6 +7,7 @@ import org.apache.http.client.ClientProtocolException;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.buaa.shortytall.MyHealth;
 import com.buaa.shortytall.network.AbstractNetWorkThread;
@@ -62,12 +63,12 @@ public class GetNewsDetailThread extends AbstractNetWorkThread implements Runnab
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
-            case MyHealth.Msg.GET_ALLNEWS_SUCCESSED:
+            case MyHealth.Msg.GET_NEWS_DETAIL_SUCCESSED:
                 Bundle bundle = msg.getData();
-                String json = bundle.getString(MyHealth.Bundle_keys.NEWS_JSON);
+                String json = bundle.getString(MyHealth.Bundle_keys.DETAIL_JSON);
                 listener.getNewsDetailSuccessed(json);
                 break;
-            case MyHealth.Msg.GET_ALLNEWS_fAILED:
+            case MyHealth.Msg.GET_NEWS_DETAIL_FAILED:
                 listener.getNewsDetailFailed();
                 break;
             default:
@@ -81,6 +82,7 @@ public class GetNewsDetailThread extends AbstractNetWorkThread implements Runnab
     public String getRequestUrl() {
         mUrl = MyHealth.Url.BASE_URL +  "/index.php/news_c/spec/id/%s";
         mUrl = String.format(mUrl, mId);
+        Log.e("Url", mUrl);
         return mUrl;
     }
 }

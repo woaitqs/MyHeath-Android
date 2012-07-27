@@ -31,9 +31,7 @@ public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageCh
     
     private ViewPager mViewPager;
     private OriginViewPagerAdapter mPageAdapter;
-//    private DotView mDotView;
     private ListView mListView;
-    private List<News> mNews;
     private NewsAdapter mNewsAdapter;
     private List<View> mViewPagerViews;
     private List<Bitmap> mBitmaps;

@@ -46,6 +46,22 @@ public class JsonUtil {
         
     }
     
+    public static News praseDetailJson(String json){
+        NewsBuider builder = new NewsBuider();
+        News detail = builder.build();
+        try{
+            JSONObject object = new JSONObject(json);
+            if (object.getInt(Keys.ERRORCODE) == 0){
+                JSONObject news = object.getJSONObject(Keys.NEWS);
+                detail = builder.setTitle(news.getString(Keys.TITLE))
+                .setContent("     "+news.getString(Keys.DETAILS))
+                .setDate(paresTimeLine(news.getLong(Keys.PUBLISH_TIME))).build();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return detail;
+    }
     
     private static String paresTimeLine(long date){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

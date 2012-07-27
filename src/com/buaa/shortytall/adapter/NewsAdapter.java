@@ -3,11 +3,14 @@ package com.buaa.shortytall.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.buaa.shortytall.MyHealth;
 import com.buaa.shortytall.R;
+import com.buaa.shortytall.activity.NewsDetailActivity;
 import com.buaa.shortytall.bean.News;
 import com.buaa.shortytall.network.ImageCache;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.view.View;
@@ -86,7 +89,9 @@ public class NewsAdapter extends BaseAdapter{
             
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, news.getmId(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext,NewsDetailActivity.class);
+                intent.putExtra(MyHealth.Bundle_keys.NEWS_ID, news.getmId());
+                mContext.startActivity(intent);
             }
         });
         

@@ -52,7 +52,7 @@ public class DotView extends LinearLayout{
         super(context, attrs);
         View content = inflate(context, R.layout.dotview, null);
         initDot(content);
-        this.addView(content);
+        this.addView(content); 
     }
 
 }

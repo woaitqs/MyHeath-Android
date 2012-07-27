@@ -1,13 +1,13 @@
 package com.buaa.shortytall.bean;
 
-public class Comments {
+public class Comment {
 	
 	private String mName;
     private String mDescription;
     private String mPoints;
     private String mTime;
     
-	public Comments(String mName, String mDescription, String mPoints,
+	public Comment(String mName, String mDescription, String mPoints,
 			String mTime) {
 		super();
 		this.mName = mName;

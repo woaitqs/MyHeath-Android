@@ -11,6 +11,12 @@
     <dimen name="nav_margin_left">3dip</dimen>
     <dimen name="nav_title_font">22dip</dimen>
     
+    <!-- news detail -->
+    <dimen name="big_font_size">19dip</dimen>
+    <dimen name="normal_font_size">18dip</dimen>
+    <dimen name="news_detail_margin">10dip</dimen>
+    <dimen name="news_detail_top">8dip</dimen>
+    
     <!-- viewpager -->
     <dimen name="viewpage_content_title_margin">7dip</dimen>
     

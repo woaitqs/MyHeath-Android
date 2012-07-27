@@ -1,14 +1,17 @@
 package com.buaa.shortytall.bean;
 
+import java.util.ArrayList;
+
 public class News {
 
     public News(String mTitle, String mContent, String mAvatar, String mId,
-            String mDate, int mComments) {
+            String mDate, int mCommentCount, ArrayList<Comment> mComments) {
         this.mTitle = mTitle;
         this.mContent = mContent;
         this.mAvatar = mAvatar;
         this.mId = mId;
         this.mDate = mDate;
+        this.mCommentCount = mCommentCount;
         this.mComments = mComments;
     }
 
@@ -17,8 +20,25 @@ public class News {
     private String mAvatar;
     private String mId;
     private String mDate;
-    private int mComments;
+    private int mCommentCount;
+    private ArrayList<Comment> mComments;
     
+    public int getmCommentCount() {
+        return mCommentCount;
+    }
+
+    public void setmCommentCount(int mCommentCount) {
+        this.mCommentCount = mCommentCount;
+    }
+
+    public void setmComments(ArrayList<Comment> mComments) {
+        this.mComments = mComments;
+    }
+
+    public ArrayList<Comment> getmComments() {
+        return mComments;
+    }
+
     public String getmTitle() {
         return mTitle;
     }
@@ -59,22 +79,15 @@ public class News {
         this.mDate = mDate;
     }
 
-    public int getmComments() {
-        return mComments;
-    }
-
-    public void setmComments(int mComments) {
-        this.mComments = mComments;
-    }
-
     public static class NewsBuider{
         private String title = "";
         private String content = "";
         private String avatar = "";
         private String id = "";
         private String date = "";
-        private int comments = 0;
-        private News news = new News(title, content, avatar, id, date, comments);
+        private int comment_count = 0;
+        private ArrayList<Comment> comments = new ArrayList<Comment>();
+        private News news = new News(title, content, avatar, id, date, comment_count,comments);
         
         public News build(){
             return news;
@@ -105,8 +118,13 @@ public class News {
             return this;
         }
         
-        public NewsBuider setComments(int count){
-            news.setmComments(count);
+        public NewsBuider setCommentCount(int count){
+            news.setmCommentCount(count);
+            return this;
+        }
+        
+        public NewsBuider setComments(ArrayList<Comment> comments){
+            news.setmComments(comments);
             return this;
         }
     }

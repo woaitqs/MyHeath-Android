@@ -29,6 +29,8 @@
     
     <!-- question answer -->
     <string name="moreAnswer">更多答案</string>
-    
-    
+    <!-- news -->
+    <string name="news_load_error">网络加载错误，请稍后再试</string>
+    <string name="news_detail_comment">请输入评论</string>
+
 </resources>

@@ -3,7 +3,7 @@ package com.buaa.shortytall.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.buaa.shortytall.bean.Comments;
+import com.buaa.shortytall.bean.Comment;
 import com.buaa.shortytall.bean.News;
 
 import android.content.Context;
@@ -16,15 +16,15 @@ public class CommentsAdapter extends BaseAdapter{
 
     private Context mContext;
     private Handler mHandler;
-    private List<Comments> mComments;
+    private List<Comment> mComments;
     
     public CommentsAdapter(Context context, Handler handler){
         this.mContext = context;
         this.mHandler = handler;
-        this.mComments = new ArrayList<Comments>();
+        this.mComments = new ArrayList<Comment>();
     }
     
-    public void setData(List<Comments> mComments){
+    public void setData(List<Comment> mComments){
         this.mComments = mComments;
         notifyDataSetChanged();
     }
@@ -59,7 +59,7 @@ public class CommentsAdapter extends BaseAdapter{
             item = (CommentsItem)convertView.getTag();
         }
         
-        final Comments comments = mComments.get(position);
+        final Comment comments = mComments.get(position);
         item.setName(comments.getmName());
         item.setDescription(comments.getmDescription());
         item.setTime(comments.getmTime());

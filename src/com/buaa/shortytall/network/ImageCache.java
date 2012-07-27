@@ -80,8 +80,8 @@ public class ImageCache {
 			File file = new File(IMAGE_FILE_FOLDER_PATH);
 			if (!file.exists()){
 				file.mkdirs();
-				STORAGE_ON = true;
 			}
+			STORAGE_ON = true;
 		}
 	}
 	
