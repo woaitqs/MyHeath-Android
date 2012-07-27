@@ -69,7 +69,7 @@ public class ProfileNewsActivity extends DefaultActivity implements GetAllPerson
 	@Override
 	public void getAllPersonalNewsSuccessed(String json) {
 		// TODO Auto-generated method stub
-		System.out.println("the json activity get "+json);
+		//System.out.println("the json activity get "+json);
 		 ArrayList<News> data = JsonUtil.prasePersonalNewsJson(json);
 	     mNewsAdapter.setData(data);   
 		
