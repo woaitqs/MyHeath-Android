@@ -48,6 +48,7 @@ public class MyHealth extends Application{
         public static final int GET_ALLCOMMENTS_fAILED = 8;
         public static final int GET_ALLPERSONNEWS_SUCCESSED = 9;
         public static final int GET_ALLPERSONNEWS_FAILD = 10;
+        public static final int NEWS_FRESH = 11;
     }
     
     public static class Bundle_keys{
