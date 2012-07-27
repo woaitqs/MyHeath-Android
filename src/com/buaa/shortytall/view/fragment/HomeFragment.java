@@ -63,8 +63,8 @@ public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageCh
                 Message message = new Message();
                 message.what = MyHealth.Msg.NEWS_FRESH;
                 timerHandler.sendMessage(message);
-                task.cancel();
-                this.cancel();
+//                task.cancel();
+//                this.cancel();
             }
         }
         
@@ -82,6 +82,7 @@ public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageCh
                         position ++;
                     }
                     mDotView.move(position);
+                    mViewPager.setCurrentItem(position);
                     break;
                 default: return;
             }
@@ -115,7 +116,7 @@ public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageCh
         super(handler, context);
         mTimer = new Timer(true);
         mStartTime = System.currentTimeMillis();
-        mTimer.schedule(task,0,1);
+        mTimer.schedule(task,0, 1000 * 3);
     }
 
     @Override
