@@ -10,9 +10,11 @@
      >
     <ImageView
         android:id="@+id/itempic"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:src="@drawable/ic_launcher"/>
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_launcher"
+        />
     <TextView
         android:id="@+id/itemname"
         android:layout_width="fill_parent"

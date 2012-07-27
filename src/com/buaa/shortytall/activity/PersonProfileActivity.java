@@ -47,12 +47,12 @@ public class PersonProfileActivity extends DefaultActivity {
 		 setContentView(R.layout.personprofile);
 		 list = (ListView)findViewById(R.id.personProfile_listview);
 		 
-		 listdata.add(createItem(R.drawable.search,"我的资讯"));
-   		 listdata.add(createItem(R.drawable.search,"我的问题"));
-		 listdata.add(createItem(R.drawable.search,"我的任务"));
-		 listdata.add(createItem(R.drawable.search,"站内信"));
-		 listdata.add(createItem(R.drawable.search,"我的收藏"));
-		 listdata.add(createItem(R.drawable.search,"注销登陆"));
+		 listdata.add(createItem(R.drawable.mynews,"我的资讯"));
+   		 listdata.add(createItem(R.drawable.myquestion,"我的问题"));
+		 listdata.add(createItem(R.drawable.mytask,"我的任务"));
+		 listdata.add(createItem(R.drawable.mymessapge,"站内信"));
+		 listdata.add(createItem(R.drawable.mycollection,"我的收藏"));
+		 listdata.add(createItem(R.drawable.mylogout,"注销登陆"));
 		 
 		 SimpleAdapter listItemAdapter = new SimpleAdapter(PersonProfileActivity.this,
 				    listdata,
