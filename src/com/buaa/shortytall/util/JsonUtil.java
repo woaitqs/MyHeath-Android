@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,7 +11,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-import com.buaa.shortytall.bean.Comments;
+import com.buaa.shortytall.bean.Comment;
 import com.buaa.shortytall.bean.News;
 import com.buaa.shortytall.bean.News.NewsBuider;
 import com.buaa.shortytall.bean.QuestionAnswer;
@@ -164,20 +163,20 @@ public class JsonUtil {
         }
         return allnews;
     }
-    public static ArrayList<Comments> praseCommentsJson(String json){
-        ArrayList<Comments> allcomments = new ArrayList<Comments>();
+    public static ArrayList<Comment> praseCommentsJson(String json){
+        ArrayList<Comment> allcomments = new ArrayList<Comment>();
         try {
             
             JSONObject jsonobject = new JSONObject(json);
             JSONObject jsondrug = jsonobject.getJSONObject("drugs");
             String total = jsondrug.getString(Keys.SCORE_AVG);
-            Comments commentitemtotal = new Comments("","",total,"");
+            Comment commentitemtotal = new Comment("","",total,"");
             allcomments.add(commentitemtotal);
             if (jsonobject.getInt(Keys.ERRORCODE) == 0){
                 JSONArray comments = jsondrug.getJSONArray(Keys.COMMENTS);
                 for (int i = 0 ; i < comments.length(); i ++){
                     JSONObject comment = (JSONObject)comments.get(i);
-                    Comments commentitem = new Comments(comment.getString("user"),comment.getString("description"),comment.getString("score"),comment.getString("comment_time"));
+                    Comment commentitem = new Comment(comment.getString("user"),comment.getString("description"),comment.getString("score"),comment.getString("comment_time"));
                  
                     allcomments.add(commentitem);
                 }

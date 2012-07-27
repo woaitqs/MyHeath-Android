@@ -8,30 +8,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.drm.DrmStore.Action;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RatingBar;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
-import com.actionbarsherlock.internal.view.menu.ActionMenu;
-import com.actionbarsherlock.internal.view.menu.ActionMenuItem;
-import com.actionbarsherlock.view.ActionProvider;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-
 import com.buaa.shortytall.R;
-import com.buaa.shortytall.adapter.CommentsAdapter;
 import com.buaa.shortytall.adapter.DrugsAdapter;
-import com.buaa.shortytall.bean.Comments;
+import com.buaa.shortytall.bean.Comment;
 import com.buaa.shortytall.bean.Drug;
-import com.buaa.shortytall.bean.News;
 import com.buaa.shortytall.thread.GetAllCommentsThread;
 import com.buaa.shortytall.thread.GetAllCommentsThread.GetAllCommentsHandler;
 import com.buaa.shortytall.thread.GetAllCommentsThread.GetAllCommentsListener;
@@ -47,7 +34,7 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
 	private SQLiteDatabaseDao daodefault;
 	
 	private ListView druglistview;
-	private ArrayList<Comments> mComments;
+	private ArrayList<Comment> mComments;
 	 
 	// 存储数据的数组列表
 	private ArrayList<HashMap<String, Object>> listData = new ArrayList<HashMap<String,Object>>();
@@ -244,7 +231,7 @@ public class DrugDetailActivity extends DefaultActivity implements GetAllComment
 	public void getAllCommentsSuccessed(String json) {
 		// TODO Auto-generated method stub
 		
-		ArrayList<Comments> data = JsonUtil.praseCommentsJson(json);
+		ArrayList<Comment> data = JsonUtil.praseCommentsJson(json);
 		int sizeofComments =  data.size()-1;
 		listItemAdapter.setCommentsData(data);
 		listItemAdapter.setCommentsnumber(sizeofComments);

@@ -3,15 +3,13 @@ package com.buaa.shortytall.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.buaa.shortytall.bean.Comments;
-import com.buaa.shortytall.bean.News;
-import com.buaa.shortytall.bean.QuestionAnswer;
-
 import android.content.Context;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import com.buaa.shortytall.bean.QuestionAnswer;
 
 public class QuestionAnswerAdapter extends BaseAdapter{
 

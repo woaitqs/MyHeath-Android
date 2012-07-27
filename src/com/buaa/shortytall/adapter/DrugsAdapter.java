@@ -1,27 +1,22 @@
 package com.buaa.shortytall.adapter;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import com.buaa.shortytall.R;
-import com.buaa.shortytall.bean.Comments;
-import com.buaa.shortytall.bean.Drug;
-import com.buaa.shortytall.bean.News;
-import com.buaa.shortytall.network.ImageCache;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Handler;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.buaa.shortytall.R;
+import com.buaa.shortytall.bean.Comment;
+import com.buaa.shortytall.bean.Drug;
+import com.buaa.shortytall.network.ImageCache;
 
 public class DrugsAdapter extends BaseAdapter{
 
@@ -61,18 +56,18 @@ public class DrugsAdapter extends BaseAdapter{
         notifyDataSetChanged();
     }
        
-    public void setCommentsData( ArrayList<Comments> data){
+    public void setCommentsData( ArrayList<Comment> data){
     	Drug drugusercommentTextView = new Drug();
     	drugusercommentTextView.setFlag(2);
     	mDrugs.add(drugusercommentTextView);
     	
-    	Comments totalcomment = data.get(0);
+    	Comment totalcomment = data.get(0);
 		String commentstring = totalcomment.getmPoints();
 		data.remove(0);
 		int size = data.size();
 		for(int i=0;i<size;i++)
 		{
-			Comments temp = data.get(i);
+			Comment temp = data.get(i);
 			Drug tempdrug = new Drug();
 			tempdrug.setmName(temp.getmName());
 			tempdrug.setmCommentDescription(temp.getmDescription());
