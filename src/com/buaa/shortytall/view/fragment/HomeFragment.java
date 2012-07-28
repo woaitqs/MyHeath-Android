@@ -123,7 +123,7 @@ public class HomeFragment extends New_BaseFragment implements ViewPager.OnPageCh
     protected Tab initTab() {
         Tab tab = ((SherlockFragmentActivity)context).getSupportActionBar()
                 .newTab();
-        tab.setText("Home");
+        tab.setText("主页");
         tab.setIcon(context.getResources().getDrawable(R.drawable.home));
         return tab;
     }

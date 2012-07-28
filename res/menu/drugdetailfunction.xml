@@ -18,7 +18,7 @@
     	    />
     	    <item android:id="@+id/sendit_weibo"
     	        android:title="@string/sendit_weibo"
-    	        android:icon="@drawable/about"
+    	        android:icon="@drawable/weibo"
     	    />
     	</menu> 
     </item>

@@ -132,7 +132,7 @@ public class SearchFragment extends New_BaseFragment{
     protected Tab initTab() {
         Tab tab = ((SherlockFragmentActivity)context).getSupportActionBar()
                 .newTab();
-        tab.setText("Search");
+        tab.setText("药品搜索");
         tab.setIcon(context.getResources().getDrawable(R.drawable.search));
         return tab;
     }

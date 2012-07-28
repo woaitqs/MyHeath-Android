@@ -33,7 +33,7 @@ public class NewsDetailActivity extends DefaultActivity implements GetNewsDetail
     
     @Override
     protected String getActionBarTitle() {
-        return "News Detail";
+        return "新闻详情";
     }
 
     @Override

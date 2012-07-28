@@ -14,6 +14,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.view.Window;
+import android.view.WindowManager;
 
 public class SplashActivity extends Activity{
 	private boolean mHasTouchScreen = false;
@@ -24,7 +25,7 @@ public class SplashActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splash);
-		
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,   WindowManager.LayoutParams.FLAG_FULLSCREEN); 
 		mTimer = new Timer(true);
 		mStartTime = System.currentTimeMillis();
 		mTimer.schedule(task,0,1);

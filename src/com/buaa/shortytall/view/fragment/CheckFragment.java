@@ -40,7 +40,7 @@ public class CheckFragment extends New_BaseFragment implements OnTouchListener{
     protected Tab initTab() {
         Tab tab = ((SherlockFragmentActivity)context).getSupportActionBar()
                 .newTab();
-        tab.setText("HealthTest");
+        tab.setText("健康自测");
         tab.setIcon(context.getResources().getDrawable(R.drawable.check));
         return tab;
     }
