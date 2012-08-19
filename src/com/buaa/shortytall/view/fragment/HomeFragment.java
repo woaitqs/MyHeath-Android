@@ -6,7 +6,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
@@ -20,8 +19,6 @@ import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.buaa.shortytall.MyHealth;
 import com.buaa.shortytall.R;
-import com.buaa.shortytall.activity.New_MainActivity;
-import com.buaa.shortytall.activity.SplashActivity;
 import com.buaa.shortytall.adapter.NewsAdapter;
 import com.buaa.shortytall.adapter.OriginViewPagerAdapter;
 import com.buaa.shortytall.bean.News;
