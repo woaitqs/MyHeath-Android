@@ -21,7 +21,7 @@
 	    <EditText 
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
-	        android:hint="1.75m"
+	        android:hint="1.75"
 	        android:id="@+id/health_calc_height"
 	        />
 	</LinearLayout>
@@ -43,7 +43,7 @@
 	    <EditText 
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
-	        android:hint="65kg"
+	        android:hint="65"
 	        android:id="@+id/health_calc_weight"
 	        />
 	</LinearLayout>

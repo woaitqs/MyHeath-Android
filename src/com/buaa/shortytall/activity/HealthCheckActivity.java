@@ -1,16 +1,21 @@
 package com.buaa.shortytall.activity;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.buaa.shortytall.R;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HealthCheckActivity extends DefaultActivity {
 
@@ -45,6 +50,15 @@ public class HealthCheckActivity extends DefaultActivity {
 
             @Override
             public void onClick(View v) {
+                if (TextUtils.isEmpty(heightET.getText().toString()) || TextUtils.isEmpty(weightET.getText().toString())){
+                    return;
+                }
+                String pattern_str = "[0-9]+(。[0-9]+)?";
+                Pattern pattern = Pattern.compile(pattern_str);
+                if (! pattern.matcher(heightET.getText().toString()).matches() || ! pattern.matcher(weightET.getText().toString()).matches()){
+                    Toast.makeText(HealthCheckActivity.this, "pleast input the data in correct way", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (Double.parseDouble(heightET.getText().toString()) > 0
                         && Double.parseDouble(weightET.getText().toString()) > 0) {
                     double height = Double.parseDouble(heightET.getText()

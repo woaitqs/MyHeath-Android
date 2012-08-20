@@ -164,6 +164,6 @@ public class New_MainActivity extends New_BaseActivity {
         tabFragments.add(new HomeFragment(handler, this));
         tabFragments.add(new CalcFragment(handler, this));
         tabFragments.add(new CheckFragment(handler, this));
-//        tabFragments.add(new SearchFragment(handler, this));
+//        tabFragments.add(new Sear  chFragment(handler, this));
     }
 }

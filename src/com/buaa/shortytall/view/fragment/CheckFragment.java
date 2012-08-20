@@ -96,11 +96,11 @@ public class CheckFragment extends New_BaseFragment implements OnTouchListener{
         ArrayList<LocationData> datas = new ArrayList<LocationData>();
         datas.add(new LocationData(82,297,MyHealth.Body_Area.UPPER_LIMB,"上肢部位","手掌，手腕等"));
         datas.add(new LocationData(150,100,MyHealth.Body_Area.BREAST,"胸部区域 ","肺部，胸腔等"));
-        datas.add(new LocationData(108,8,MyHealth.Body_Area.HEAD,"头部","口，耳，鼻，眼等"));
-        datas.add(new LocationData(239,63,MyHealth.Body_Area.NECK,"肩部","肩，颈部等"));
+        datas.add(new LocationData(128,8,MyHealth.Body_Area.HEAD,"头部","口，耳，鼻，眼等"));
+        //datas.add(new LocationData(239,63,MyHealth.Body_Area.NECK,"肩部","肩，颈部等"));
         datas.add(new LocationData(213,383,MyHealth.Body_Area.LOWER_LIMB,"下肢","膝盖，大腿等"));
-        datas.add(new LocationData(161,577,MyHealth.Body_Area.BELLY,"腹部","胃，肠等"));
-        datas.add(new LocationData(195,256,MyHealth.Body_Area.REPRODUCTIVE,"生殖部位","生殖器官等"));
+        datas.add(new LocationData(161,177,MyHealth.Body_Area.BELLY,"腹部","胃，肠等"));
+        //datas.add(new LocationData(195,256,MyHealth.Body_Area.REPRODUCTIVE,"生殖部位","生殖器官等"));
         
         for(LocationData item : datas){
             popOut(item);
